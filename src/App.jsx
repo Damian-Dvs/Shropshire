@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddToHomePrompt from './components/AddToHomePrompt';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Results from './components/Results';
@@ -37,6 +38,7 @@ function App() {
                 </div>
               </section>
 
+              <AddToHomePrompt />
               <About />
               <Results />
               <BlogPreview /> {/* Only latest 3 posts here */}
