@@ -3,16 +3,11 @@ import { useEffect, useState } from 'react';
 function AddToHomePrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
-  const [isIos, setIsIos] = useState(false);
 
   useEffect(() => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
-    const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
-    const isInStandalone = ('standalone' in window.navigator) && window.navigator.standalone;
+    const hasSeenPrompt = localStorage.getItem('hb95AddPromptDismissed');
+    if (hasSeenPrompt) return;
 
-    setIsIos(isIosDevice && !isInStandalone);
-
-    // Android + Chrome support
     const handler = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -20,7 +15,6 @@ function AddToHomePrompt() {
     };
 
     window.addEventListener('beforeinstallprompt', handler);
-
     return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
@@ -29,33 +23,36 @@ function AddToHomePrompt() {
       deferredPrompt.prompt();
       const choice = await deferredPrompt.userChoice;
       if (choice.outcome === 'accepted') {
+        localStorage.setItem('hb95AddPromptDismissed', 'true');
         setShowPrompt(false);
       }
     }
   };
 
-  if (!showPrompt && !isIos) return null;
+  const handleDismiss = () => {
+    localStorage.setItem('hb95AddPromptDismissed', 'true');
+    setShowPrompt(false);
+  };
+
+  if (!showPrompt) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white border border-teal-600 px-4 py-3 rounded-lg shadow-xl text-black z-50 max-w-sm w-full text-center">
-      {isIos ? (
-        <>
-          <p className="text-sm">
-            Add <strong>HB95</strong> to your Home Screen:<br />
-            Tap <span className="font-bold">Share</span> then <span className="font-bold">‘Add to Home Screen’</span>
-          </p>
-        </>
-      ) : (
-        <>
-          <p className="text-sm">Add <strong>HB95</strong> to your Home Screen!</p>
-          <button
-            className="mt-2 bg-teal-600 text-white px-4 py-2 rounded shadow hover:bg-teal-700 transition"
-            onClick={handleInstall}
-          >
-            Add Now
-          </button>
-        </>
-      )}
+    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white shadow-lg border px-4 py-2 rounded text-black z-50 flex items-center justify-between gap-4">
+      <p className="text-sm">Add HB95 to your Home Screen for quick access!</p>
+      <div className="flex gap-2">
+        <button
+          onClick={handleInstall}
+          className="bg-teal-600 text-white px-3 py-1 rounded"
+        >
+          Add
+        </button>
+        <button
+          onClick={handleDismiss}
+          className="text-gray-500 hover:text-black text-sm"
+        >
+          Dismiss
+        </button>
+      </div>
     </div>
   );
 }
