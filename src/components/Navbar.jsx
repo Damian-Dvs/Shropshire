@@ -9,8 +9,11 @@ export default function Navbar() {
       role="navigation"
       aria-label="Main Navigation"
     >
-      <div className="max-w-6xl mx-auto px-4 py-5 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold">ShropShine</a>
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="flex items-center">
+          <img src="/logo.png" alt="ShropShine Logo" className="h-12 w-auto" />
+        </a>
 
         {/* Desktop nav */}
         <div className="hidden md:flex space-x-6">
