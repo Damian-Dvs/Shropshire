@@ -17,13 +17,12 @@ export default function ContactForm() {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setError(""); // Clear error on change
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setError("Please fill in all fields.");
       return;
@@ -32,13 +31,15 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("message", formData.message);
+
       const res = await fetch("https://getform.io/f/bkknmmmb", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(formData)
+        body: payload
       });
 
       if (!res.ok) throw new Error("Submission failed");
@@ -46,7 +47,7 @@ export default function ContactForm() {
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", message: "" });
 
-      setTimeout(() => setSubmitted(false), 4000); // Hide after 4s
+      setTimeout(() => setSubmitted(false), 4000);
     } catch (err) {
       setError("There was a problem submitting the form.");
     }
