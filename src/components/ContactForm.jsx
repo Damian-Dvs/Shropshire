@@ -22,38 +22,40 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Basic validation
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setError("Please fill in all fields.");
       return;
     }
-
+  
     setLoading(true);
-
+  
+    // Create FormData object
+    const formPayload = new FormData();
+    formPayload.append("name", formData.name);
+    formPayload.append("email", formData.email);
+    formPayload.append("phone", formData.phone);
+    formPayload.append("message", formData.message);
+  
     try {
-      const payload = new FormData();
-      payload.append("name", formData.name);
-      payload.append("email", formData.email);
-      payload.append("phone", formData.phone);
-      payload.append("message", formData.message);
-
       const res = await fetch("https://getform.io/f/bkknmmmb", {
         method: "POST",
-        body: payload
+        body: formPayload, // no headers for multipart/form-data!
       });
-
+  
       if (!res.ok) throw new Error("Submission failed");
-
+  
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", message: "" });
-
       setTimeout(() => setSubmitted(false), 4000);
     } catch (err) {
       setError("There was a problem submitting the form.");
     }
-
+  
     setLoading(false);
   };
+  
 
   return (
     <section id="contact" className="bg-soft py-6 px-0">
