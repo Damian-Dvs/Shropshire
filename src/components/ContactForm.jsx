@@ -157,7 +157,7 @@ export default function ContactForm() {
               <div>
                 <label htmlFor="serviceDate" className="block text-sm text-primary font-medium mb-1">Preferred Date</label>
                 <input
-                  type="date"
+                  type="text"
                   id="serviceDate"
                   name="serviceDate"
                   aria-label="Preferred Date"
@@ -165,22 +165,28 @@ export default function ContactForm() {
                   min={today}
                   value={formData.serviceDate}
                   onChange={handleChange}
-                  required
+                  onFocus={(e) => (e.target.type = 'date')}
+                  onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
+                  inputMode="none"
                   placeholder="Preferred Date"
+                  required
                 />
               </div>
               <div>
                 <label htmlFor="serviceTime" className="block text-sm text-primary font-medium mb-1">Preferred Time</label>
                 <input
-                  type="time"
+                  type="text"
                   id="serviceTime"
                   name="serviceTime"
                   aria-label="Preferred Time"
                   className={inputClass}
                   value={formData.serviceTime}
                   onChange={handleChange}
-                  required
+                  onFocus={(e) => (e.target.type = 'time')}
+                  onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
+                  inputMode="none"
                   placeholder="Preferred Time"
+                  required
                 />
               </div>
             </div>
