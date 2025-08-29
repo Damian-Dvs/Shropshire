@@ -3,6 +3,7 @@ import { useState } from "react";
 const GETFORM_ENDPOINT = "https://getform.io/f/bkknmmmb";
 
 export default function ContactForm() {
+  const inputClass = "w-full bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
   const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: "",
@@ -125,7 +126,7 @@ export default function ContactForm() {
               name="name"
               placeholder="Name"
               aria-label="Name"
-              className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+              className={inputClass}
               value={formData.name}
               onChange={handleChange}
               required
@@ -136,7 +137,7 @@ export default function ContactForm() {
               name="email"
               placeholder="Email"
               aria-label="Email"
-              className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+              className={inputClass}
               value={formData.email}
               onChange={handleChange}
               required
@@ -147,20 +148,20 @@ export default function ContactForm() {
               name="phone"
               placeholder="Phone Number"
               aria-label="Phone Number"
-              className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+              className={inputClass}
               value={formData.phone}
               onChange={handleChange}
               required
             />
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-3 md:gap-4 md:grid-cols-2">
               <div>
-                <label htmlFor="serviceDate" className="sr-only">Preferred Date</label>
+                <label htmlFor="serviceDate" className="block text-sm text-primary font-medium mb-1">Preferred Date</label>
                 <input
                   type="date"
                   id="serviceDate"
                   name="serviceDate"
                   aria-label="Preferred Date"
-                  className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+                  className={inputClass}
                   min={today}
                   value={formData.serviceDate}
                   onChange={handleChange}
@@ -168,16 +169,17 @@ export default function ContactForm() {
                 />
               </div>
               <div>
-                <label htmlFor="serviceTime" className="sr-only">Preferred Time</label>
+                <label htmlFor="serviceTime" className="block text-sm text-primary font-medium mb-1">Preferred Time</label>
                 <input
                   type="time"
                   id="serviceTime"
                   name="serviceTime"
                   aria-label="Preferred Time"
-                  className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+                  className={inputClass}
                   value={formData.serviceTime}
                   onChange={handleChange}
                   required
+                  placeholder="Preferred Time"
                 />
               </div>
             </div>
@@ -188,7 +190,7 @@ export default function ContactForm() {
               rows="4"
               placeholder="Message or preferred time"
               aria-label="Message"
-              className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+              className={inputClass}
               value={formData.message}
               onChange={handleChange}
               required
