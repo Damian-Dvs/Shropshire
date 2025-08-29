@@ -114,7 +114,7 @@ export default function ContactForm() {
 
         {submitted ? (
           <div
-            className="text-green-600 text-center text-lg font-medium"
+            className="text-black text-center text-lg font-medium"
             role="status"
             aria-live="polite"
           >
