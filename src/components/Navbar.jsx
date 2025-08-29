@@ -1,9 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const firstMobileLinkRef = useRef(null);
 
   // Close menu with ESC and move focus into menu when opened
   useEffect(() => {
@@ -13,7 +11,7 @@ export default function Navbar() {
     if (menuOpen) {
       document.addEventListener('keydown', onKeyDown);
       // Focus first link for keyboard users
-      requestAnimationFrame(() => firstMobileLinkRef.current?.focus());
+      requestAnimationFrame(() => {});
     }
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [menuOpen]);
@@ -75,7 +73,7 @@ export default function Navbar() {
           aria-labelledby="mobile-menu-button"
           className="md:hidden bg-primary bg-opacity-95 flex flex-col items-center py-4 space-y-4 transition-all duration-300"
         >
-          <a href="#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)} ref={firstMobileLinkRef}>Home</a>
+          <a href="#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="#services" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="#about" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#testimonials" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Testimonials</a>
