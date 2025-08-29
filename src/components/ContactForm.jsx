@@ -3,10 +3,13 @@ import { useState } from "react";
 const GETFORM_ENDPOINT = "https://getform.io/f/bkknmmmb";
 
 export default function ContactForm() {
+  const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    serviceDate: "",
+    serviceTime: "",
     message: "",
     _gotcha: "", // honeypot for bots
   });
@@ -24,8 +27,8 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simple client-side validation (same as before)
-    if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+    // Simple client-side validation (now includes new fields)
+    if (!formData.name || !formData.email || !formData.phone || !formData.serviceDate || !formData.serviceTime || !formData.message) {
       setError("Please fill in all fields.");
       return;
     }
@@ -38,6 +41,8 @@ export default function ContactForm() {
       body.append("name", formData.name);
       body.append("email", formData.email);
       body.append("phone", formData.phone);
+      body.append("serviceDate", formData.serviceDate);
+      body.append("serviceTime", formData.serviceTime);
       body.append("message", formData.message);
       // Honeypot (bots will fill this, humans won't)
       body.append("_gotcha", formData._gotcha);
@@ -58,6 +63,8 @@ export default function ContactForm() {
           name: "",
           email: "",
           phone: "",
+          serviceDate: "",
+          serviceTime: "",
           message: "",
           _gotcha: "",
         });
@@ -145,6 +152,36 @@ export default function ContactForm() {
               onChange={handleChange}
               required
             />
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <label htmlFor="serviceDate" className="sr-only">Preferred Date</label>
+                <input
+                  type="date"
+                  id="serviceDate"
+                  name="serviceDate"
+                  aria-label="Preferred Date"
+                  className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+                  min={today}
+                  value={formData.serviceDate}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="serviceTime" className="sr-only">Preferred Time</label>
+                <input
+                  type="time"
+                  id="serviceTime"
+                  name="serviceTime"
+                  aria-label="Preferred Time"
+                  className="w-full border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary"
+                  value={formData.serviceTime}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            <p className="text-sm text-gray-600">We’ll confirm the closest available slot.</p>
 
             <textarea
               name="message"
