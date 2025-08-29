@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const GETFORM_ENDPOINT = "https://api.getform.io/v1/forms/bkknmmmb?token=HJt5MscweTd6VXOOHoSArnow2zEV1NCXlfkYLHZNxUUfxrxmC6xoveME2vRv";
+const GETFORM_ENDPOINT = "https://getform.io/f/bkknmmmb";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
