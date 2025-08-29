@@ -166,6 +166,7 @@ export default function ContactForm() {
                   value={formData.serviceDate}
                   onChange={handleChange}
                   required
+                  placeholder="Preferred Date"
                 />
               </div>
               <div>
