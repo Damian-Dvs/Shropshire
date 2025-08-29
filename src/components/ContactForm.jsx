@@ -223,7 +223,7 @@ export default function ContactForm() {
             <textarea
               name="message"
               rows="4"
-              placeholder="Message or preferred time"
+              placeholder="Message"
               aria-label="Message"
               className={inputClass}
               value={formData.message}
