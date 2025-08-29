@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const GETFORM_ENDPOINT = "https://getform.io/f/bkknmmmb";
 
 export default function ContactForm() {
-  const inputClass = "w-full bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
+  const inputClass = "w-full h-12 bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
   const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: "",
@@ -14,6 +14,28 @@ export default function ContactForm() {
     message: "",
     _gotcha: "", // honeypot for bots
   });
+
+  const dateRef = useRef(null);
+  const timeRef = useRef(null);
+
+  const activatePicker = (ref, type) => {
+    const el = ref?.current;
+    if (!el) return;
+    // Switch to the native type first
+    if (el.type !== type) el.type = type;
+    // Ensure the element is focused, then try to open the picker
+    requestAnimationFrame(() => {
+      try {
+        if (typeof el.showPicker === 'function') {
+          el.showPicker();
+        } else {
+          el.focus();
+        }
+      } catch (_) {
+        el.focus();
+      }
+    });
+  };
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -165,10 +187,13 @@ export default function ContactForm() {
                   min={today}
                   value={formData.serviceDate}
                   onChange={handleChange}
-                  onFocus={(e) => (e.target.type = 'date')}
+                  onFocus={() => activatePicker(dateRef, 'date')}
+                  onClick={() => activatePicker(dateRef, 'date')}
+                  onTouchStart={() => activatePicker(dateRef, 'date')}
                   onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
                   inputMode="none"
                   placeholder="Preferred Date"
+                  ref={dateRef}
                   required
                 />
               </div>
@@ -182,10 +207,13 @@ export default function ContactForm() {
                   className={inputClass}
                   value={formData.serviceTime}
                   onChange={handleChange}
-                  onFocus={(e) => (e.target.type = 'time')}
+                  onFocus={() => activatePicker(timeRef, 'time')}
+                  onClick={() => activatePicker(timeRef, 'time')}
+                  onTouchStart={() => activatePicker(timeRef, 'time')}
                   onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
                   inputMode="none"
                   placeholder="Preferred Time"
+                  ref={timeRef}
                   required
                 />
               </div>
