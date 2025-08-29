@@ -18,7 +18,7 @@ const services = [
   },
   { 
     title: "Deep Clean", 
-    price: "from £65", 
+    price: "from £70", 
     icon: "🪣", 
     comment: "Like hitting the reset button for your home", 
     description:
@@ -28,7 +28,7 @@ const services = [
       "Wiping down skirting boards, doors, and frames",
       "Shining up light fittings, switches, and handles",
       "Full scrub and sanitise of bathrooms and kitchens",
-      "Cleaning inside cupboards, ovens, and fridges (if requested)",
+      "Cleaning inside cupboards, and fridges (additional charges may apply)",
       "Polishing inside windows so they’re streak-free",
       "Disinfecting high-touch areas for extra peace of mind",
     ],
