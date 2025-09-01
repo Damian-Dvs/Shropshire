@@ -15,8 +15,9 @@ const BRAND = {
   // use an absolute URL for emails
   logo: 'https://shropshinecleaning.com/logo.png',
   siteUrl: 'https://shropshinecleaning.com',
-  // sender (must be on your verified domain)
-  from: 'ShropShine <bookings@shropshinecleaning.com>',
+  // sender addresses (must be verified in Resend)
+  bookingsFrom: 'ShropShine <bookings@shropshinecleaning.com>',
+  noreplyFrom: 'ShropShine <noreply@shropshinecleaning.com>',
   // where you receive enquiries
   adminTo: ['damiandvs87@btinternet.com'],
 };
@@ -56,16 +57,16 @@ export default async function handler(req, res) {
 
       // Admin notification (reply-to customer)
       await resend.emails.send({
-        from: BRAND.from,
+        from: BRAND.bookingsFrom,
         to: BRAND.adminTo,
-        reply_to: data.email,
+        reply_to: data.email, // reply goes to the customer
         subject: 'New ShropShine contact request',
         html: renderThemedEmail({ variant: 'admin', ...data }),
       });
 
-      // Customer confirmation
+      // Customer confirmation (auto-reply)
       await resend.emails.send({
-        from: BRAND.from,
+        from: BRAND.noreplyFrom,
         to: [data.email],
         subject: 'We received your request — ShropShine Cleaning',
         html: renderThemedEmail({ variant: 'customer', ...data }),
@@ -107,7 +108,6 @@ function escapeHtml(str = '') {
 }
 
 function renderThemedEmail({ variant = 'admin', name, email, phone, serviceDate, serviceTime, message }) {
-  // Copy your site’s feel: teal header, white content card, soft aqua background.
   const fontStack = "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
   const heading = variant === 'admin' ? 'New contact request' : 'Thanks — we received your request';
   const intro = variant === 'admin'
