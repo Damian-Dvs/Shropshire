@@ -19,7 +19,7 @@ const BRAND = {
   bookingsFrom: 'ShropShine <bookings@shropshinecleaning.com>',
   noreplyFrom: 'ShropShine <noreply@shropshinecleaning.com>',
   // where you receive enquiries
-  adminTo: ['damiandvs87@btinternet.com'],
+  adminTo: ['hcs15@outlook.com'],
 };
 
 export default async function handler(req, res) {
