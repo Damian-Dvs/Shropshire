@@ -49,8 +49,8 @@ export default async function handler(req, res) {
 
       // Change the addresses to your own
       await resend.emails.send({
-        from: 'ShropShine <no-reply@shropshinecleaning.com>', // must be a verified domain in Resend
-        to: ['damiandvs87@ybtinternet.com'],                    // where you want to receive notifications
+        from: 'ShropShine <bookings@shropshinecleaning.com>', // must be a verified domain in Resend
+        to: ['damiandvs87@btinternet.com'],                    // where you want to receive notifications
         subject: 'New ShropShine contact request',
         html,
       });
