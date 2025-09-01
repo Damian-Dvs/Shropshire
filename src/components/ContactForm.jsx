@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const GETFORM_ENDPOINT = "https://getform.io/f/bkknmmmb";
+const GETFORM_ENDPOINT = "/api/contact";
 
 export default function ContactForm() {
   const inputClass = "w-full h-12 bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
@@ -59,27 +59,33 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      // Build multipart/form-data for Getform
-      const body = new FormData();
-      body.append("name", formData.name);
-      body.append("email", formData.email);
-      body.append("phone", formData.phone);
-      body.append("serviceDate", formData.serviceDate);
-      body.append("serviceTime", formData.serviceTime);
-      body.append("message", formData.message);
-      // Honeypot (bots will fill this, humans won't)
-      body.append("_gotcha", formData._gotcha);
+      // Build JSON payload for our own API
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        serviceDate: formData.serviceDate,
+        serviceTime: formData.serviceTime,
+        message: formData.message,
+        _gotcha: formData._gotcha,
+      };
 
       const response = await fetch(GETFORM_ENDPOINT, {
         method: "POST",
-        body,
-        // Do NOT set Content-Type; the browser will set the correct boundary
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      // Try to parse JSON response; tolerate empty body
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (_) {}
+
+      if (response.ok && (!data || data.ok !== false)) {
         setSubmitted(true);
         // Optional: clear the form
         setFormData({
@@ -92,12 +98,8 @@ export default function ContactForm() {
           _gotcha: "",
         });
       } else {
-        // Try to read any error message from Getform
         let msg = "Something went wrong. Please try again.";
-        try {
-          const data = await response.json();
-          if (data?.error) msg = data.error;
-        } catch {}
+        if (data?.error) msg = data.error;
         setError(msg);
       }
     } catch (err) {
