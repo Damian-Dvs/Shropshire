@@ -17,9 +17,9 @@ const BRAND = {
   siteUrl: 'https://shropshinecleaning.com',
   // sender addresses (must be verified in Resend)
   bookingsFrom: 'ShropShine <bookings@shropshinecleaning.com>',
-  noreplyFrom: 'ShropShine <noreply@shropshinecleaning.com>',
+  noreplyFrom: 'ShropShine-no-reply <noreply@shropshinecleaning.com>',
   // where you receive enquiries
-  adminTo: ['hcs15@outlook.com'],
+  adminTo: ['bookings@shropshinecleaning.com'],
 };
 
 export default async function handler(req, res) {
