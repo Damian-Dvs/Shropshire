@@ -16,7 +16,7 @@ const BRAND = {
   logo: 'https://shropshinecleaning.com/logo.png',
   siteUrl: 'https://shropshinecleaning.com',
   // sender addresses (must be verified in Resend)
-  bookingsFrom: 'ShropShine <web-bookings@shropshinecleaning.com>',
+  bookingsFrom: 'ShropShine-web-bookings <web-bookings@shropshinecleaning.com>',
   noreplyFrom: 'ShropShine-no-reply <noreply@shropshinecleaning.com>',
   // where you receive enquiries
   adminTo: ['bookings@shropshinecleaning.com'],
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       await resend.emails.send({
         from: BRAND.noreplyFrom,
         to: [data.email],
-        subject: 'We received your request — ShropShine Cleaning',
+        subject: 'We have received your request — ShropShine Cleaning',
         html: renderThemedEmail({ variant: 'customer', ...data }),
       });
     } else {
@@ -109,7 +109,7 @@ function escapeHtml(str = '') {
 
 function renderThemedEmail({ variant = 'admin', name, email, phone, serviceDate, serviceTime, message }) {
   const fontStack = "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
-  const heading = variant === 'admin' ? 'New contact request' : 'Thanks — we received your request';
+  const heading = variant === 'admin' ? 'New contact request' : 'Thanks — w have received your request';
   const intro = variant === 'admin'
     ? `A new enquiry has been submitted on <strong>${escapeHtml(BRAND.name)}</strong>.`
     : `Hi ${escapeHtml(name)},<br>Thanks for contacting <strong>${escapeHtml(BRAND.name)}</strong>. We’ve received your request and will be in touch shortly.`;
