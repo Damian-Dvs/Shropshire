@@ -109,7 +109,7 @@ function escapeHtml(str = '') {
 
 function renderThemedEmail({ variant = 'admin', name, email, phone, serviceDate, serviceTime, message }) {
   const fontStack = "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
-  const heading = variant === 'admin' ? 'New contact request' : 'Thankyou for your request';
+  const heading = variant === 'admin' ? 'New contact request' : 'Thank you for your request';
   const intro = variant === 'admin'
     ? `A new enquiry has been submitted on <strong>${escapeHtml(BRAND.name)}</strong>.`
     : `Hi ${escapeHtml(name)},<br>Thanks for contacting <strong>${escapeHtml(BRAND.name)}</strong>. We’ve received your request and will be in touch shortly.`;
