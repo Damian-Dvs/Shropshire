@@ -8,14 +8,14 @@ export default function Footer() {
               href="mailto:bookings@shropshinecleaning.com"
               className="hover:underline hover:text-soft"
             >
-              hello@shropshinecleaning.com
+              bookings@shropshinecleaning.com
             </a>
             <span>|</span>
             <a
               href="tel:07532029849"
               className="hover:underline hover:text-soft"
             >
-              +44 700000000000
+              07532029849
             </a>
           </div>
           <p className="text-white">Website created by DDesigns</p>
