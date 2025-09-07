@@ -16,7 +16,7 @@ const BRAND = {
   logo: 'https://shropshinecleaning.com/logo.png',
   siteUrl: 'https://shropshinecleaning.com',
   // sender addresses (must be verified in Resend)
-  bookingsFrom: 'ShropShine <bookings@shropshinecleaning.com>',
+  bookingsFrom: 'ShropShine <web-bookings@shropshinecleaning.com>',
   noreplyFrom: 'ShropShine-no-reply <noreply@shropshinecleaning.com>',
   // where you receive enquiries
   adminTo: ['bookings@shropshinecleaning.com'],
