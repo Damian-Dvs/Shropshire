@@ -5,14 +5,14 @@ export default function Footer() {
           <p>{new Date().getFullYear()} ShropShine Cleaning. All rights reserved.</p>
           <div className="space-x-3">
             <a
-              href="mailto:hello@shropshinecleaning.com"
+              href="mailto:bookings@shropshinecleaning.com"
               className="hover:underline hover:text-soft"
             >
               hello@shropshinecleaning.com
             </a>
             <span>|</span>
             <a
-              href="tel:+44000000000000"
+              href="tel:07532029849"
               className="hover:underline hover:text-soft"
             >
               +44 700000000000
