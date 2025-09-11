@@ -1,9 +1,9 @@
 const services = [
-  { 
-    title: "Standard Clean", 
-    price: "from £35", 
-    icon: "🧼", 
-    comment: "Minimum booking: 2 hours (£17.50/hr)", 
+  {
+    title: "Standard Clean",
+    price: "from £35",
+    icon: "🧼",
+    comment: "Minimum booking: 2 hours (£17.50/hr)",
     description:
       "Our standard clean is all about keeping your home fresh, tidy, and comfortable on a regular basis. It covers the everyday cleaning jobs that make the biggest difference, so you can relax and enjoy your space without the stress.",
     features: [
@@ -16,11 +16,11 @@ const services = [
     footer:
       "It’s a great option for weekly, fortnightly, or monthly cleaning to keep everything looking its best.",
   },
-  { 
-    title: "Deep Clean", 
-    price: "from £70", 
-    icon: "🪣", 
-    comment: "Like hitting the reset button for your home", 
+  {
+    title: "Deep Clean",
+    price: "from £70",
+    icon: "🪣",
+    comment: "Like hitting the reset button for your home",
     description:
       "Our deep clean goes further than a regular clean, reaching those spots that don’t usually get much attention and leaving everything sparkling.",
     features: [
@@ -35,11 +35,11 @@ const services = [
     footer:
       "Perfect if you’re moving in or out, preparing for guests, or just want your home to feel brand new again.",
   },
-  { 
-    title: "End of Tenancy", 
-    price: "£POA", 
-    icon: "🏠", 
-    comment: "Compliant with landlord/agency requirements", 
+  {
+    title: "End of Tenancy",
+    price: "£POA",
+    icon: "🏠",
+    comment: "Compliant with landlord/agency requirements",
     description:
       "A thorough top-to-bottom clean to make sure your property is ready for inspection and deposit return.",
     features: [
@@ -52,11 +52,11 @@ const services = [
     footer:
       "Designed to meet landlord and letting agent standards for a stress-free handover.",
   },
-  { 
-    title: "House Moves", 
-    price: "£POA", 
-    icon: "🚚", 
-    comment: "Move-in / Move-out support", 
+  {
+    title: "House Moves",
+    price: "£POA",
+    icon: "🚚",
+    comment: "Move-in / Move-out support",
     description:
       "Our move clean helps you leave your old home spotless or prepare your new one so it’s fresh and welcoming.",
     features: [
@@ -75,16 +75,30 @@ export default function Services() {
   return (
     <section id="services" className="py-16 px-4 bg-soft">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-primary mb-10">Our Services</h2>
+        <h2 className="text-3xl font-bold text-center text-primary mb-10">
+          Our Services
+        </h2>
         <div className="grid md:grid-cols-2 gap-8 md:gap-10">
           {services.map((s, i) => (
             <article
               key={i}
+              aria-labelledby={`service-${i}-title`}
               className="bg-white shadow-lg p-6 rounded-2xl text-center border border-soft/70 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
             >
-              <div className="text-5xl mb-3 leading-none">{s.icon}</div>
+              <div
+                className="text-5xl mb-3 leading-none"
+                role="img"
+                aria-label={s.title}
+              >
+                {s.icon}
+              </div>
 
-              <h3 className="text-2xl font-semibold">{s.title}</h3>
+              <h3
+                id={`service-${i}-title`}
+                className="text-2xl font-semibold"
+              >
+                {s.title}
+              </h3>
 
               <div className="mt-2 mb-1 inline-flex items-center gap-2">
                 <span className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-sm">
@@ -94,12 +108,10 @@ export default function Services() {
 
               <p className="text-gray-600 text-sm italic mb-5">{s.comment}</p>
 
-              {/* intro paragraph with comfortable line-length */}
               <p className="mx-auto max-w-[60ch] text-base leading-relaxed mb-4">
                 {s.description}
               </p>
 
-              {/* centered bullet section: ul is centered and sized; bullets align neatly */}
               <div className="mx-auto">
                 <ul className="mx-auto inline-block text-left list-disc list-inside text-[0.95rem] leading-relaxed space-y-1.5 marker:text-primary">
                   {s.features?.map((f, idx) => (
@@ -108,7 +120,6 @@ export default function Services() {
                 </ul>
               </div>
 
-              {/* footer note with lighter tone and centered */}
               <p className="mx-auto max-w-[60ch] text-gray-700 text-sm mt-5">
                 {s.footer}
               </p>

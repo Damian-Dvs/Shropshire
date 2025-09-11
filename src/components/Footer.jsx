@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-center md:text-left space-y-4 md:space-y-0">
         
         {/* NAP block for Local SEO */}
-        <div className="text-white">
+        <address className="not-italic text-white">
           <strong>ShropShine Cleaning</strong>
           <br />
           Shropshire, UK
@@ -19,7 +19,7 @@ export default function Footer() {
           >
             bookings@shropshinecleaning.com
           </a>
-        </div>
+        </address>
 
         {/* Legal / year */}
         <p className="text-white">
@@ -27,7 +27,17 @@ export default function Footer() {
         </p>
 
         {/* Attribution */}
-        <p className="text-white">Website created by DDesigns</p>
+        <p className="text-white">
+          Website created by{" "}
+          <a
+            href="https://ddesigns.example.com"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="hover:underline hover:text-soft"
+          >
+            DDesigns
+          </a>
+        </p>
       </div>
     </footer>
   );

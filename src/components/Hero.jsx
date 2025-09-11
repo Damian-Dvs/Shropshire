@@ -15,7 +15,8 @@ export default function Hero() {
           Domestic and commercial cleaning across Shropshire.
         </p>
         <a
-          href="#contact"
+          href="/#contact"
+          aria-label="Request a cleaning slot with ShropShine"
           className="inline-block bg-white text-primary font-semibold px-6 py-3 rounded shadow hover:bg-soft hover:scale-105 transform transition-all duration-200"
         >
           Request a Slot

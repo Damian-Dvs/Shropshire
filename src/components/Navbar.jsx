@@ -3,17 +3,15 @@ import { useState, useEffect } from "react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Close menu with ESC and move focus into menu when opened
+  // Close menu with ESC
   useEffect(() => {
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') setMenuOpen(false);
+      if (e.key === "Escape") setMenuOpen(false);
     };
     if (menuOpen) {
-      document.addEventListener('keydown', onKeyDown);
-      // Focus first link for keyboard users
-      requestAnimationFrame(() => {});
+      document.addEventListener("keydown", onKeyDown);
     }
-    return () => document.removeEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
   return (
@@ -24,17 +22,17 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <a href="/#home" className="flex items-center" aria-label="ShropShine Home">
           <img src="/logo.png" alt="ShropShine Logo" className="h-12 w-auto" />
         </a>
 
         {/* Desktop nav */}
         <div className="hidden md:flex space-x-6">
-          <a href="#home" className="hover:text-soft transition py-2">Home</a>
-          <a href="#services" className="hover:text-soft transition py-2">Services</a>
-          <a href="#about" className="hover:text-soft transition py-2">About</a>
-          <a href="#testimonials" className="hover:text-soft transition py-2">Testimonials</a>
-          <a href="#contact" className="hover:text-soft transition py-2">Contact</a>
+          <a href="/#home" className="hover:text-soft transition py-2">Home</a>
+          <a href="/#services" className="hover:text-soft transition py-2">Services</a>
+          <a href="/#about" className="hover:text-soft transition py-2">About</a>
+          <a href="/#testimonials" className="hover:text-soft transition py-2">Testimonials</a>
+          <a href="/#contact" className="hover:text-soft transition py-2">Contact</a>
         </div>
 
         {/* Mobile burger button */}
@@ -73,11 +71,11 @@ export default function Navbar() {
           aria-labelledby="mobile-menu-button"
           className="md:hidden bg-primary bg-opacity-95 flex flex-col items-center py-4 space-y-4 transition-all duration-300"
         >
-          <a href="#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="#services" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Services</a>
-          <a href="#about" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#testimonials" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Testimonials</a>
-          <a href="#contact" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Contact</a>
+          <a href="/#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="/#services" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="/#about" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="/#testimonials" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Testimonials</a>
+          <a href="/#contact" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
       )}
     </nav>

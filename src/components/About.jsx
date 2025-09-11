@@ -52,6 +52,7 @@ export default function About() {
                 alt="Simply Business"
                 height="60"
                 width="58"
+                loading="lazy"
                 src="https://quote.simplybusiness.co.uk/assets/ci5/sb/badge_logo.png"
                 style={{
                   display: "block",
@@ -90,7 +91,7 @@ export default function About() {
           <a
             href="https://www.simplybusiness.co.uk/?ref_id=RAFXA_CHBI5164646XB1&amp;source=popBadge"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             style={{
               display: "block",
               textAlign: "center",

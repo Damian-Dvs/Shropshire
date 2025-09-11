@@ -3,17 +3,18 @@ import { useState, useRef } from "react";
 const GETFORM_ENDPOINT = "/api/contact";
 
 export default function ContactForm() {
-  const inputClass = "w-full h-12 bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
-  const today = new Date().toISOString().split('T')[0];
+  const inputClass =
+    "w-full h-12 bg-white border border-primary rounded p-3 focus:outline-none focus:ring focus:ring-primary appearance-none text-left text-base";
+  const today = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    location: "",         
+    location: "",
     serviceDate: "",
     serviceTime: "",
     message: "",
-    hearAbout: "",       
+    hearAbout: "",
     _gotcha: "", // honeypot for bots
   });
 
@@ -26,7 +27,7 @@ export default function ContactForm() {
     if (el.type !== type) el.type = type;
     requestAnimationFrame(() => {
       try {
-        if (typeof el.showPicker === 'function') {
+        if (typeof el.showPicker === "function") {
           el.showPicker();
         } else {
           el.focus();
@@ -50,12 +51,11 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simple client-side validation (now includes new fields)
     if (
       !formData.name ||
       !formData.email ||
       !formData.phone ||
-      !formData.location ||            
+      !formData.location ||
       !formData.serviceDate ||
       !formData.serviceTime ||
       !formData.message
@@ -67,18 +67,7 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      // Build JSON payload for our own API
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        location: formData.location,
-        serviceDate: formData.serviceDate,
-        serviceTime: formData.serviceTime,
-        message: formData.message,
-        hearAbout: formData.hearAbout,   // NEW (optional)
-        _gotcha: formData._gotcha,
-      };
+      const payload = { ...formData };
 
       const response = await fetch(GETFORM_ENDPOINT, {
         method: "POST",
@@ -96,16 +85,15 @@ export default function ContactForm() {
 
       if (response.ok && (!data || data.ok !== false)) {
         setSubmitted(true);
-        // Optional: clear the form
         setFormData({
           name: "",
           email: "",
           phone: "",
-          location: "",                  
+          location: "",
           serviceDate: "",
           serviceTime: "",
           message: "",
-          hearAbout: "",                
+          hearAbout: "",
           _gotcha: "",
         });
       } else {
@@ -123,7 +111,12 @@ export default function ContactForm() {
   return (
     <section id="contact" className="py-16 px-4 bg-white">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-primary mb-6 text-center">Request a Slot</h2>
+        <h2
+          id="contact-heading"
+          className="text-3xl font-bold text-primary mb-6 text-center"
+        >
+          Request a Slot
+        </h2>
 
         {submitted ? (
           <div
@@ -145,7 +138,7 @@ export default function ContactForm() {
               </div>
             )}
 
-            {/* Honeypot field (hidden) */}
+            {/* Honeypot */}
             <input
               type="text"
               name="_gotcha"
@@ -161,6 +154,7 @@ export default function ContactForm() {
               name="name"
               placeholder="Name"
               aria-label="Name"
+              autoComplete="name"
               className={inputClass}
               value={formData.name}
               onChange={handleChange}
@@ -172,6 +166,7 @@ export default function ContactForm() {
               name="email"
               placeholder="Email"
               aria-label="Email"
+              autoComplete="email"
               className={inputClass}
               value={formData.email}
               onChange={handleChange}
@@ -183,6 +178,7 @@ export default function ContactForm() {
               name="phone"
               placeholder="Phone Number"
               aria-label="Phone Number"
+              autoComplete="tel"
               className={inputClass}
               value={formData.phone}
               onChange={handleChange}
@@ -194,6 +190,7 @@ export default function ContactForm() {
               name="location"
               placeholder="Location (e.g., Oswestry)"
               aria-label="Location"
+              autoComplete="address-level2"
               className={inputClass}
               value={formData.location}
               onChange={handleChange}
@@ -202,7 +199,12 @@ export default function ContactForm() {
 
             <div className="grid gap-3 md:gap-4 md:grid-cols-2">
               <div>
-                <label htmlFor="serviceDate" className="block text-sm text-primary font-medium mb-1">Preferred Date</label>
+                <label
+                  htmlFor="serviceDate"
+                  className="block text-sm text-primary font-medium mb-1"
+                >
+                  Preferred Date
+                </label>
                 <input
                   type="text"
                   id="serviceDate"
@@ -212,10 +214,12 @@ export default function ContactForm() {
                   min={today}
                   value={formData.serviceDate}
                   onChange={handleChange}
-                  onFocus={() => activatePicker(dateRef, 'date')}
-                  onClick={() => activatePicker(dateRef, 'date')}
-                  onTouchStart={() => activatePicker(dateRef, 'date')}
-                  onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
+                  onFocus={() => activatePicker(dateRef, "date")}
+                  onClick={() => activatePicker(dateRef, "date")}
+                  onTouchStart={() => activatePicker(dateRef, "date")}
+                  onBlur={(e) => {
+                    if (!e.target.value) e.target.type = "text";
+                  }}
                   inputMode="none"
                   placeholder="Preferred Date"
                   ref={dateRef}
@@ -223,7 +227,12 @@ export default function ContactForm() {
                 />
               </div>
               <div>
-                <label htmlFor="serviceTime" className="block text-sm text-primary font-medium mb-1">Preferred Time</label>
+                <label
+                  htmlFor="serviceTime"
+                  className="block text-sm text-primary font-medium mb-1"
+                >
+                  Preferred Time
+                </label>
                 <input
                   type="text"
                   id="serviceTime"
@@ -232,10 +241,12 @@ export default function ContactForm() {
                   className={inputClass}
                   value={formData.serviceTime}
                   onChange={handleChange}
-                  onFocus={() => activatePicker(timeRef, 'time')}
-                  onClick={() => activatePicker(timeRef, 'time')}
-                  onTouchStart={() => activatePicker(timeRef, 'time')}
-                  onBlur={(e) => { if (!e.target.value) e.target.type = 'text'; }}
+                  onFocus={() => activatePicker(timeRef, "time")}
+                  onClick={() => activatePicker(timeRef, "time")}
+                  onTouchStart={() => activatePicker(timeRef, "time")}
+                  onBlur={(e) => {
+                    if (!e.target.value) e.target.type = "text";
+                  }}
                   inputMode="none"
                   placeholder="Preferred Time"
                   ref={timeRef}
@@ -243,22 +254,28 @@ export default function ContactForm() {
                 />
               </div>
             </div>
-            <p className="text-sm text-gray-600">We’ll confirm the closest available slot.</p>
+            <p className="text-sm text-gray-600">
+              We’ll confirm the closest available slot.
+            </p>
 
             <textarea
               name="message"
               rows="4"
               placeholder="Message"
               aria-label="Message"
+              aria-describedby="contact-heading"
               className={inputClass}
               value={formData.message}
               onChange={handleChange}
               required
             />
 
-            {/* NEW: How did you hear about us? (last field) */}
+            {/* How did you hear about us? */}
             <div>
-              <label htmlFor="hearAbout" className="block text-sm text-primary font-medium mb-1">
+              <label
+                htmlFor="hearAbout"
+                className="block text-sm text-primary font-medium mb-1"
+              >
                 How did you hear about us?
               </label>
               <select

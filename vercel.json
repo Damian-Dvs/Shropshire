@@ -1,6 +1,11 @@
 {
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "redirects": [
+    { "source": "/contact",      "destination": "/#contact",      "permanent": true },
+    { "source": "/services",     "destination": "/#services",     "permanent": true },
+    { "source": "/about",        "destination": "/#about",        "permanent": true },
+    { "source": "/testimonials", "destination": "/#testimonials", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
