@@ -8,9 +8,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'HB95 Racing',
-        short_name: 'HB95',
-        description: 'Follow Harley Bebb #95 on the track!',
+        name: 'Shropshine Cleaning',
+        short_name: 'Shropshine',
+        description: 'Shropshine Cleaning Services',
         theme_color: '#0f766e',
         background_color: '#ffffff',
         display: 'standalone',
