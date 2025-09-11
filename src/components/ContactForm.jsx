@@ -7,13 +7,13 @@ export default function ContactForm() {
   const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: "",
-    location: "",         // NEW
     email: "",
     phone: "",
+    location: "",         
     serviceDate: "",
     serviceTime: "",
     message: "",
-    hearAbout: "",        // NEW
+    hearAbout: "",       
     _gotcha: "", // honeypot for bots
   });
 
@@ -53,9 +53,9 @@ export default function ContactForm() {
     // Simple client-side validation (now includes new fields)
     if (
       !formData.name ||
-      !formData.location ||             // NEW
       !formData.email ||
       !formData.phone ||
+      !formData.location ||            
       !formData.serviceDate ||
       !formData.serviceTime ||
       !formData.message
@@ -70,9 +70,9 @@ export default function ContactForm() {
       // Build JSON payload for our own API
       const payload = {
         name: formData.name,
-        location: formData.location,     // NEW
         email: formData.email,
         phone: formData.phone,
+        location: formData.location,
         serviceDate: formData.serviceDate,
         serviceTime: formData.serviceTime,
         message: formData.message,
@@ -99,13 +99,13 @@ export default function ContactForm() {
         // Optional: clear the form
         setFormData({
           name: "",
-          location: "",                  // NEW
           email: "",
           phone: "",
+          location: "",                  
           serviceDate: "",
           serviceTime: "",
           message: "",
-          hearAbout: "",                 // NEW
+          hearAbout: "",                
           _gotcha: "",
         });
       } else {
@@ -167,18 +167,6 @@ export default function ContactForm() {
               required
             />
 
-            {/* NEW: Location (under Name) */}
-            <input
-              type="text"
-              name="location"
-              placeholder="Location (e.g., Oswestry)"
-              aria-label="Location"
-              className={inputClass}
-              value={formData.location}
-              onChange={handleChange}
-              required
-            />
-
             <input
               type="email"
               name="email"
@@ -200,6 +188,18 @@ export default function ContactForm() {
               onChange={handleChange}
               required
             />
+
+            <input
+              type="text"
+              name="location"
+              placeholder="Location (e.g., Oswestry)"
+              aria-label="Location"
+              className={inputClass}
+              value={formData.location}
+              onChange={handleChange}
+              required
+            />
+
             <div className="grid gap-3 md:gap-4 md:grid-cols-2">
               <div>
                 <label htmlFor="serviceDate" className="block text-sm text-primary font-medium mb-1">Preferred Date</label>
