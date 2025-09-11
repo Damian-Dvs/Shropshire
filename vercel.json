@@ -1,9 +1,19 @@
 {
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "shropshinecleaning.com" }],
+      "destination": "https://www.shropshinecleaning.com/:path*",
+      "permanent": true
+    },
     { "source": "/contact",      "destination": "/#contact",      "permanent": true },
+    { "source": "/contact/",     "destination": "/#contact",      "permanent": true },
     { "source": "/services",     "destination": "/#services",     "permanent": true },
+    { "source": "/services/",    "destination": "/#services",     "permanent": true },
     { "source": "/about",        "destination": "/#about",        "permanent": true },
-    { "source": "/testimonials", "destination": "/#testimonials", "permanent": true }
+    { "source": "/about/",       "destination": "/#about",        "permanent": true },
+    { "source": "/testimonials", "destination": "/#testimonials", "permanent": true },
+    { "source": "/testimonials/","destination": "/#testimonials", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
