@@ -1,0 +1,14 @@
+{
+  "name": "ShropShine Cleaning",
+  "short_name": "ShropShine",
+  "description": "Family-run domestic & commercial cleaners in Shropshire.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#003049",
+  "icons": [
+    { "src": "/logo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/logolarge.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
