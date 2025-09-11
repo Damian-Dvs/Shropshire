@@ -7,11 +7,13 @@ export default function ContactForm() {
   const today = new Date().toISOString().split('T')[0];
   const [formData, setFormData] = useState({
     name: "",
+    location: "",         // NEW
     email: "",
     phone: "",
     serviceDate: "",
     serviceTime: "",
     message: "",
+    hearAbout: "",        // NEW
     _gotcha: "", // honeypot for bots
   });
 
@@ -21,9 +23,7 @@ export default function ContactForm() {
   const activatePicker = (ref, type) => {
     const el = ref?.current;
     if (!el) return;
-    // Switch to the native type first
     if (el.type !== type) el.type = type;
-    // Ensure the element is focused, then try to open the picker
     requestAnimationFrame(() => {
       try {
         if (typeof el.showPicker === 'function') {
@@ -51,7 +51,15 @@ export default function ContactForm() {
     e.preventDefault();
 
     // Simple client-side validation (now includes new fields)
-    if (!formData.name || !formData.email || !formData.phone || !formData.serviceDate || !formData.serviceTime || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.location ||             // NEW
+      !formData.email ||
+      !formData.phone ||
+      !formData.serviceDate ||
+      !formData.serviceTime ||
+      !formData.message
+    ) {
       setError("Please fill in all fields.");
       return;
     }
@@ -62,11 +70,13 @@ export default function ContactForm() {
       // Build JSON payload for our own API
       const payload = {
         name: formData.name,
+        location: formData.location,     // NEW
         email: formData.email,
         phone: formData.phone,
         serviceDate: formData.serviceDate,
         serviceTime: formData.serviceTime,
         message: formData.message,
+        hearAbout: formData.hearAbout,   // NEW (optional)
         _gotcha: formData._gotcha,
       };
 
@@ -79,7 +89,6 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      // Try to parse JSON response; tolerate empty body
       let data = null;
       try {
         data = await response.json();
@@ -90,11 +99,13 @@ export default function ContactForm() {
         // Optional: clear the form
         setFormData({
           name: "",
+          location: "",                  // NEW
           email: "",
           phone: "",
           serviceDate: "",
           serviceTime: "",
           message: "",
+          hearAbout: "",                 // NEW
           _gotcha: "",
         });
       } else {
@@ -152,6 +163,18 @@ export default function ContactForm() {
               aria-label="Name"
               className={inputClass}
               value={formData.name}
+              onChange={handleChange}
+              required
+            />
+
+            {/* NEW: Location (under Name) */}
+            <input
+              type="text"
+              name="location"
+              placeholder="Location (e.g., Oswestry)"
+              aria-label="Location"
+              className={inputClass}
+              value={formData.location}
               onChange={handleChange}
               required
             />
@@ -232,6 +255,26 @@ export default function ContactForm() {
               onChange={handleChange}
               required
             />
+
+            {/* NEW: How did you hear about us? (last field) */}
+            <div>
+              <label htmlFor="hearAbout" className="block text-sm text-primary font-medium mb-1">
+                How did you hear about us?
+              </label>
+              <select
+                id="hearAbout"
+                name="hearAbout"
+                aria-label="How did you hear about us?"
+                className={`${inputClass} h-auto py-3`}
+                value={formData.hearAbout}
+                onChange={handleChange}
+              >
+                <option value="">Please select</option>
+                <option value="Google">Google</option>
+                <option value="Flyer/Poster">Flyer/Poster</option>
+                <option value="Recommendation">Recommendation</option>
+              </select>
+            </div>
 
             <button
               type="submit"

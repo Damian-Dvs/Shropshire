@@ -1,4 +1,3 @@
-// api/contact.js
 import { Resend } from 'resend';
 
 const BRAND = {
@@ -45,7 +44,7 @@ export default async function handler(req, res) {
     if (data._gotcha) return res.status(200).json({ ok: true });
 
     // Validation
-    const required = ['name', 'email', 'phone', 'serviceDate', 'serviceTime', 'message'];
+    const required = ['name', 'location', 'email', 'phone', 'serviceDate', 'serviceTime', 'message']; // ADD 'location'
     const missing = required.filter((k) => !String(data[k] || '').trim());
     if (missing.length) {
       return res.status(400).json({ ok: false, error: 'Please fill in all fields.' });
@@ -107,7 +106,8 @@ function escapeHtml(str = '') {
     .replace(/'/g, '&#39;');
 }
 
-function renderThemedEmail({ variant = 'admin', name, email, phone, serviceDate, serviceTime, message }) {
+// ADDed location & hearAbout to the signature
+function renderThemedEmail({ variant = 'admin', name, location, email, phone, serviceDate, serviceTime, message, hearAbout }) {
   const fontStack = "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif";
   const heading = variant === 'admin' ? 'New contact request' : 'Thank you for your request';
   const intro = variant === 'admin'
@@ -156,10 +156,12 @@ function renderThemedEmail({ variant = 'admin', name, email, phone, serviceDate,
 
           <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:separate;border-spacing:0 10px;margin:8px 0 18px">
             ${row('Name', name)}
+            ${row('Location', location)}                         <!-- NEW -->
             ${row('Email', email)}
             ${row('Phone', phone)}
             ${row('Preferred Date', serviceDate)}
             ${row('Preferred Time', serviceTime)}
+            ${hearAbout ? row('How did you hear about us?', hearAbout) : ''} <!-- NEW (optional) -->
           </table>
 
           <div style="margin:14px 0 8px;font-weight:700;color:${BRAND.dark}">Message</div>
