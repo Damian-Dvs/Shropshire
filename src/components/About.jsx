@@ -3,10 +3,17 @@ export default function About() {
     <section id="about" className="bg-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-primary mb-6">About ShropShine</h2>
+
+        {/* Main About paragraph */}
         <p className="text-gray-700 leading-relaxed text-lg mb-8">
           ShropShine is a family-run cleaning company serving homes and businesses across Shropshire.
           We pride ourselves on <strong>reliability</strong>, <strong>attention to detail</strong>, and bringing a shine to every space we clean.
           Whether you need regular home cleans or one-off deep cleaning, we’re here to help — with a sparkle.
+        </p>
+
+        {/* Insurance statement */}
+        <p className="text-gray-700 leading-relaxed text-lg mb-8">
+          For your peace of mind, ShropShine is fully insured through Simply Business.
         </p>
 
         {/* Insurance Badge */}
@@ -43,13 +50,17 @@ export default function About() {
               />
               <img
                 alt="Simply Business"
-                width="58"
                 height="60"
+                width="58"
                 src="https://quote.simplybusiness.co.uk/assets/ci5/sb/badge_logo.png"
-                style={{ display: "block", margin: "0 auto", border: 0, background: "none" }}
+                style={{
+                  display: "block",
+                  margin: "0 auto",
+                  border: 0,
+                  background: "none",
+                }}
               />
             </picture>
-
             <p
               style={{
                 margin: "16px 0 12px",
