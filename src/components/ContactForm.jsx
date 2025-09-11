@@ -271,6 +271,7 @@ export default function ContactForm() {
               >
                 <option value="">Please select</option>
                 <option value="Google">Google</option>
+                <option value="Facebook">Facebook</option>
                 <option value="Flyer/Poster">Flyer/Poster</option>
                 <option value="Recommendation">Recommendation</option>
               </select>
