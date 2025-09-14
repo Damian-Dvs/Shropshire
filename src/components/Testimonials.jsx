@@ -1,11 +1,11 @@
 const testimonials = [
   {
-    name: "Emma R.",
-    text: "Absolutely spotless every time. ShropShine is the best cleaning service I've ever used.",
+    name: "Lucy E.",
+    text: "Hayley is lovely, very thorough and was great with my dog pip too!",
   },
   {
-    name: "Josh M.",
-    text: "Reliable, friendly, and thorough. Highly recommended.",
+    name: "Holly C.",
+    text: "Hayley Did a fantastic job, with great attention to detail. Would definately recommend her services",
   },
 ];
 

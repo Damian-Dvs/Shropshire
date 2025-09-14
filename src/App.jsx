@@ -19,7 +19,6 @@ function App() {
       <Testimonials />
       <ContactForm />
       <Footer />
-      {/* Vercel Analytics */}
       <Analytics />
     </>
   );
