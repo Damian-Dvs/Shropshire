@@ -2,18 +2,31 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "shropshinecleaning.com" }],
-      "destination": "https://www.shropshinecleaning.com/:path*",
+      "has": [{ "type": "host", "value": "shropshine.com" }],
+      "destination": "https://www.shropshine.com/:path*",
       "permanent": true
     },
-    { "source": "/contact",      "destination": "/#contact",      "permanent": true },
-    { "source": "/contact/",     "destination": "/#contact",      "permanent": true },
-    { "source": "/services",     "destination": "/#services",     "permanent": true },
-    { "source": "/services/",    "destination": "/#services",     "permanent": true },
-    { "source": "/about",        "destination": "/#about",        "permanent": true },
-    { "source": "/about/",       "destination": "/#about",        "permanent": true },
-    { "source": "/testimonials", "destination": "/#testimonials", "permanent": true },
-    { "source": "/testimonials/","destination": "/#testimonials", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "shropshinecleaning.com" }],
+      "destination": "https://www.shropshine.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.shropshinecleaning.com" }],
+      "destination": "https://www.shropshine.com/:path*",
+      "permanent": true
+    },
+
+    { "source": "/contact",       "destination": "/#contact",       "permanent": true },
+    { "source": "/contact/",      "destination": "/#contact",       "permanent": true },
+    { "source": "/services",      "destination": "/#services",      "permanent": true },
+    { "source": "/services/",     "destination": "/#services",      "permanent": true },
+    { "source": "/about",         "destination": "/#about",         "permanent": true },
+    { "source": "/about/",        "destination": "/#about",         "permanent": true },
+    { "source": "/testimonials",  "destination": "/#testimonials",  "permanent": true },
+    { "source": "/testimonials/", "destination": "/#testimonials",  "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
