@@ -63,7 +63,7 @@ export default function FacebookTeaser() {
     <section id="facebook" className="py-16 md:py-20 bg-soft">
       <div className="mx-auto max-w-6xl px-4">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="text-2xl text-primary md:text-3xl font-semibold tracking-tight">
+          <h2 className="text-3xl text-primary md:text-3xl font-semibold tracking-tight">
             Follow us on Facebook
           </h2>
           <p className="mt-2 text-slate-600">
