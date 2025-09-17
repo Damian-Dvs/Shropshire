@@ -7,6 +7,10 @@ const testimonials = [
     name: "Holly C.",
     text: "Hayley Did a fantastic job, with great attention to detail. Would definately recommend her services",
   },
+    {
+    name: "Jen H.",
+    text: "Hayley is brilliant, she's just cleaned my house! She's even helped me with putting up my curtains 🤩 I have a biweekly clean and already looking forward to her coming back. Thanks Hayley! 😍",
+  },
 ];
 
 export default function Testimonials() {
