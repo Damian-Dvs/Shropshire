@@ -1,4 +1,8 @@
 const testimonials = [
+    {
+    name: "Jane C.",
+    text: "Thank you to the lovely, hardworking Hayley. Her professionalism and thoroughness left my Mum's house like a new pin. Delighted."
+  },
   {
     name: "Lucy E.",
     text: "Hayley is lovely, very thorough and was great with my dog pip too!",
