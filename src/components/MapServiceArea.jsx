@@ -85,7 +85,7 @@ export default function MapServiceArea({
         <ServiceAreaList
           previewCount={previewCount}
           gridClassName={gridClassName}
-          chipClassName="block w-full truncate rounded-2xl border border-gray-200 bg-white px-4 py-2 text-base text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow transition focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            chipClassName="block w-full truncate rounded-2xl border border-gray-200 bg-white px-4 py-2 text-base text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow transition focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 text-center"
         />
       </div>
 
