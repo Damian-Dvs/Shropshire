@@ -17,13 +17,22 @@ export default function Hero() {
         <p className="text-lg sm:text-xl mb-6 drop-shadow">
           Family-run specialists for standard, deep and end-of-tenancy cleans across Shropshire.
         </p>
-        <a
-          href="/#contact"
-          aria-label="Request a cleaning slot with ShropShine"
-          className="inline-block bg-white text-primary font-semibold px-6 py-3 rounded shadow hover:bg-soft hover:scale-105 transform transition-all duration-200"
-        >
-          Request a Slot
-        </a>
+        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <a
+            href="/#contact"
+            aria-label="Request a cleaning slot with ShropShine"
+            className="inline-flex items-center justify-center bg-white text-primary font-semibold px-6 py-3 rounded shadow hover:bg-soft hover:scale-105 transform transition-all duration-200"
+          >
+            Request a Slot
+          </a>
+          <a
+            href="/#services"
+            aria-label="Explore ShropShine cleaning services"
+            className="inline-flex items-center justify-center border border-white/70 px-6 py-3 rounded font-semibold text-white hover:bg-white/10 hover:scale-105 transform transition-all duration-200"
+          >
+            View Services
+          </a>
+        </div>
       </div>
     </section>
   );
