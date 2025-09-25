@@ -9,10 +9,13 @@ export default function Hero() {
 
       <div className="relative z-10 px-4 py-20 sm:py-28 md:py-36 lg:py-44 max-w-4xl">
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-md">
-          Sparkle with <span className="text-white">ShropShine</span>
+          ShropShine Cleaning
+          <span className="block text-xl sm:text-2xl font-normal mt-2">
+            Domestic & Commercial Cleaners in Shropshire
+          </span>
         </h1>
         <p className="text-lg sm:text-xl mb-6 drop-shadow">
-          Domestic and commercial cleaning across Shropshire.
+          Family-run specialists for standard, deep and end-of-tenancy cleans across Shropshire.
         </p>
         <a
           href="/#contact"
