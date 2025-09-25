@@ -19,6 +19,15 @@ export default function Footer() {
           >
             bookings@shropshinecleaning.com
           </a>
+          <br />
+          <a
+            href="https://www.facebook.com/61579277243121"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-soft"
+          >
+            Facebook
+          </a>
         </address>
 
         {/* Legal / year */}

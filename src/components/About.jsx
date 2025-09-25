@@ -12,8 +12,10 @@ export default function About() {
           ShropShine is a family-run cleaning company serving homes and businesses across
           Shropshire. We pride ourselves on <strong>reliability</strong>,{" "}
           <strong>attention to detail</strong>, and bringing a shine to every space we
-          clean. Whether you need regular home cleans or one-off deep cleaning, we’re here
-          to help — with a sparkle.
+          clean.</p>
+          <p className="text-gray-700 leading-relaxed text-lg mb-8">Whether you need regular home cleans or one-off deep cleaning, we’re here
+          to help. Regular and one-off cleans are available in Oswestry,
+          Ellesmere, Gobowen, Shrewsbury and neighbouring towns and villages.
         </p>
 
         {/* Areas + Map */}
@@ -23,7 +25,7 @@ export default function About() {
           </h3>
           <p className="text-gray-700 leading-relaxed text-lg text-center mb-6">
             We provide domestic and commercial cleaning locally, covering towns and
-            villages within roughly a 9-mile radius of St Martins.
+            villages within roughly a 10-mile radius of St Martins.
           </p>
 
           <MapServiceArea />

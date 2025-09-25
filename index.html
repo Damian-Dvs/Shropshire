@@ -61,6 +61,7 @@
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
+        "@id": "https://www.shropshinecleaning.com/#localbusiness",
         "name": "ShropShine Cleaning",
         "alternateName": "ShropShine Cleaning | Domestic & Commercial Cleaners in Shropshire",
         "description": "Domestic and commercial cleaning specialists serving homes and businesses across Shropshire.",
@@ -71,14 +72,224 @@
         "priceRange": "££",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Shropshire",
+          "addressLocality": "St Martins",
+          "addressRegion": "Shropshire",
+          "postalCode": "SY11",
           "addressCountry": "GB"
         },
         "areaServed": {
           "@type": "AdministrativeArea",
           "name": "Shropshire"
         },
-        "sameAs": []
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "sameAs": [
+          "https://maps.app.goo.gl/VdmNuttycThPKCPb9",
+          "https://www.facebook.com/61579277243121"
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: Service Areas (static for crawlers without JS) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@type": "Place", "name": "St Martin's" } },
+          { "@type": "ListItem", "position": 2, "item": { "@type": "Place", "name": "Oswestry" } },
+          { "@type": "ListItem", "position": 3, "item": { "@type": "Place", "name": "Overton" } },
+          { "@type": "ListItem", "position": 4, "item": { "@type": "Place", "name": "Llangollen" } },
+          { "@type": "ListItem", "position": 5, "item": { "@type": "Place", "name": "Weston Rhyn" } },
+          { "@type": "ListItem", "position": 6, "item": { "@type": "Place", "name": "Ellesmere" } },
+          { "@type": "ListItem", "position": 7, "item": { "@type": "Place", "name": "Morda" } },
+          { "@type": "ListItem", "position": 8, "item": { "@type": "Place", "name": "Gobowen" } },
+          { "@type": "ListItem", "position": 9, "item": { "@type": "Place", "name": "Chirk" } },
+          { "@type": "ListItem", "position": 10, "item": { "@type": "Place", "name": "Whittington" } },
+          { "@type": "ListItem", "position": 11, "item": { "@type": "Place", "name": "Selattyn" } },
+          { "@type": "ListItem", "position": 12, "item": { "@type": "Place", "name": "Nesscliffe" } },
+          { "@type": "ListItem", "position": 13, "item": { "@type": "Place", "name": "West Felton" } },
+          { "@type": "ListItem", "position": 14, "item": { "@type": "Place", "name": "Froncysyllte" } },
+          { "@type": "ListItem", "position": 15, "item": { "@type": "Place", "name": "Dudleston Heath" } },
+          { "@type": "ListItem", "position": 16, "item": { "@type": "Place", "name": "Shrewsbury" } }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: Service keywords for non-visual indexing -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#domestic-cleaning-shropshire",
+            "name": "Domestic Cleaning Shropshire",
+            "serviceType": "Domestic cleaning Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Family-run domestic cleaners keeping Shropshire homes fresh and tidy."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#cleaners-oswestry",
+            "name": "Cleaners Oswestry",
+            "serviceType": "Cleaners Oswestry",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "City", "name": "Oswestry" },
+            "description": "Professional cleaners serving households and offices across Oswestry."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#cleaners-ellesmere",
+            "name": "Cleaners Ellesmere",
+            "serviceType": "Cleaners Ellesmere",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "City", "name": "Ellesmere" },
+            "description": "Reliable domestic cleaning for properties in Ellesmere and nearby villages."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#deep-cleaning-shropshire",
+            "name": "Deep Cleaning Shropshire",
+            "serviceType": "Deep cleaning Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Intensive deep cleaning that refreshes Shropshire homes from top to bottom."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#deep-clean-oswestry",
+            "name": "Deep Clean Oswestry",
+            "serviceType": "Deep clean Oswestry",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "City", "name": "Oswestry" },
+            "description": "Detailed deep cleans for Oswestry households before moves, guests or renovations."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#end-of-tenancy-shropshire",
+            "name": "End of Tenancy Cleaning Shropshire",
+            "serviceType": "End of tenancy cleaning Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Deposit-safe end of tenancy cleaning for landlords and tenants across Shropshire."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#office-cleaning-shropshire",
+            "name": "Office Cleaning Shropshire",
+            "serviceType": "Office cleaning Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Flexible office cleaning and workspace hygiene services for Shropshire businesses."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#commercial-cleaning-oswestry",
+            "name": "Commercial Cleaning Oswestry",
+            "serviceType": "Commercial cleaning Oswestry",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "City", "name": "Oswestry" },
+            "description": "Commercial and office cleaning support for Oswestry shops, clinics and workplaces."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#move-out-cleaning-shropshire",
+            "name": "Move Out Cleaning Shropshire",
+            "serviceType": "Move out cleaning Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Move-out cleans to leave Shropshire properties spotless for the next residents."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#spring-clean-shrewsbury",
+            "name": "Spring Clean Shrewsbury",
+            "serviceType": "Spring clean Shrewsbury",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "City", "name": "Shrewsbury" },
+            "description": "Seasonal spring cleaning to refresh homes across Shrewsbury."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#landlord-cleaning-services-shropshire",
+            "name": "Landlord Cleaning Services Shropshire",
+            "serviceType": "Landlord cleaning services Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Landlord-ready cleaning packages for rental turnovers in Shropshire."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#insured-cleaners-shropshire",
+            "name": "Insured Cleaners Shropshire",
+            "serviceType": "Insured cleaners Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Fully insured cleaning team providing peace of mind across Shropshire."
+          },
+          {
+            "@type": "Service",
+            "@id": "https://www.shropshinecleaning.com/#family-run-cleaners-shropshire",
+            "name": "Family-Run Cleaners Shropshire",
+            "serviceType": "Family-run cleaners Shropshire",
+            "provider": {
+              "@type": "LocalBusiness",
+              "@id": "https://www.shropshinecleaning.com/#localbusiness"
+            },
+            "areaServed": { "@type": "AdministrativeArea", "name": "Shropshire" },
+            "description": "Family-run cleaners delivering trusted service throughout Shropshire."
+          }
+        ]
       }
     </script>
 
