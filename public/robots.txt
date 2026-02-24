@@ -1,4 +1,22 @@
+# ShropShine Cleaning – robots.txt
 User-agent: *
 Allow: /
+Disallow: /api/
+
+# Slow down heavy commercial crawlers so they don't hammer the server
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
 
 Sitemap: https://www.shropshinecleaning.com/sitemap.xml
