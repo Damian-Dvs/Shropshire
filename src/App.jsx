@@ -15,8 +15,8 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <About />
       <Services />
+      <About />
       <Testimonials />
       <ContactForm />
       <FacebookSection />
