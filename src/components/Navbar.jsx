@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Mobile burger button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 rounded"
           aria-label="Toggle Menu"
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -64,20 +64,21 @@ export default function Navbar() {
       </div>
 
       {/* Mobile nav links */}
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          role="menu"
-          aria-labelledby="mobile-menu-button"
-          className="md:hidden bg-primary bg-opacity-95 flex flex-col items-center py-4 space-y-4 transition-all duration-300"
-        >
-          <a href="/#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
-          <a href="/#services" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Services</a>
-          <a href="/#about" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="/#testimonials" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Testimonials</a>
-          <a href="/#contact" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Contact</a>
-        </div>
-      )}
+      <div
+        id="mobile-menu"
+        role="menu"
+        aria-labelledby="mobile-menu-button"
+        aria-hidden={!menuOpen}
+        className={`md:hidden bg-primary bg-opacity-95 flex flex-col items-center space-y-4 overflow-hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? "max-h-64 py-4 opacity-100" : "max-h-0 py-0 opacity-0"
+        }`}
+      >
+        <a href="/#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
+        <a href="/#services" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Services</a>
+        <a href="/#about" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>About</a>
+        <a href="/#testimonials" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Testimonials</a>
+        <a href="/#contact" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Contact</a>
+      </div>
     </nav>
   );
 }

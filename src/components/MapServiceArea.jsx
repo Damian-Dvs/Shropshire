@@ -87,7 +87,7 @@ export default function MapServiceArea({
         <ServiceAreaList
           previewCount={previewCount}
           gridClassName={gridClassName}
-            chipClassName="block w-full truncate rounded-2xl border border-gray-200 bg-white px-4 py-2 text-base text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow transition focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 text-center"
+            chipClassName="block w-full truncate rounded-2xl border border-gray-200 bg-white px-4 py-2 text-base text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-center"
         />
       </div>
 
@@ -119,7 +119,7 @@ function ServiceAreaList({ previewCount = 8, gridClassName, chipClassName }) {
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="inline-flex items-center rounded-2xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            className="inline-flex items-center rounded-2xl border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-gray-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             aria-expanded={expanded}
             aria-controls="service-area-more"
           >
