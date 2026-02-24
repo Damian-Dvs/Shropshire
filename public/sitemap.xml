@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
   <url>
     <loc>https://www.shropshinecleaning.com/</loc>
     <lastmod>2026-02-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.shropshinecleaning.com/hero-clean.jpg</image:loc>
+      <image:title>Professional cleaning services in Shropshire by ShropShine</image:title>
+      <image:caption>Freshly cleaned living room by ShropShine – domestic and commercial cleaners in Shropshire</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.shropshinecleaning.com/logo.png</image:loc>
+      <image:title>ShropShine Cleaning logo – family-run cleaners in Shropshire</image:title>
+    </image:image>
+    <xhtml:link rel="alternate" hreflang="en-gb"    href="https://www.shropshinecleaning.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.shropshinecleaning.com/" />
   </url>
 </urlset>

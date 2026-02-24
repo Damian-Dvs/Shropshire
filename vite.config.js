@@ -23,10 +23,10 @@ export default defineConfig({
         ]
       },
       manifest: {
-        name: 'Shropshine Cleaning',
-        short_name: 'Shropshine',
-        description: 'Shropshine Cleaning Services',
-        theme_color: '#0f766e',
+        name: 'ShropShine Cleaning',
+        short_name: 'ShropShine',
+        description: 'Family-run domestic and commercial cleaners in Shropshire',
+        theme_color: '#003049',
         background_color: '#ffffff',
         display: 'standalone',
         icons: [
