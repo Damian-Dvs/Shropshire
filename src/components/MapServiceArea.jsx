@@ -3,6 +3,7 @@ import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 const center = { lat: 52.9163, lng: -3.0265 }; // Approx. St Martins
 const NINE_MILES_METERS = 14484;
+const LIBRARIES = [];
 
 // Single place names only (no ", UK" or postcodes)
 const ALL_LOCATIONS = [
@@ -32,7 +33,7 @@ export default function MapServiceArea({
 }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: ["maps"],
+    libraries: LIBRARIES,
   });
 
   const [map, setMap] = useState(null);
