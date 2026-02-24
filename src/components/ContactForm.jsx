@@ -225,7 +225,7 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="grid gap-3 md:gap-4 md:grid-cols-2">
+            <div className="grid gap-5 md:grid-cols-2">
               <div>
                 <label htmlFor="serviceDate" className={labelClass}>
                   Preferred Date
@@ -339,7 +339,7 @@ export default function ContactForm() {
               className="w-full rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
               aria-busy={loading}
             >
-              {loading ? "Sending..." : "Submit"}
+              {loading ? "Sending..." : "Request a Slot"}
             </button>
             <p className="text-center text-xs text-gray-500">
               Your information is used only to respond to your enquiry.

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -22,10 +22,13 @@ const testimonials = [
 export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = useMemo(() => testimonials.length, []);
+  const paused = useRef(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveIndex((idx) => (idx + 1) % total);
+      if (!paused.current) {
+        setActiveIndex((idx) => (idx + 1) % total);
+      }
     }, 7000);
     return () => clearInterval(timer);
   }, [total]);
@@ -49,6 +52,10 @@ export default function Testimonials() {
       id="testimonials"
       className="bg-soft py-16 px-4"
       aria-labelledby="testimonials-heading"
+      onMouseEnter={() => { paused.current = true; }}
+      onMouseLeave={() => { paused.current = false; }}
+      onFocusCapture={() => { paused.current = true; }}
+      onBlurCapture={() => { paused.current = false; }}
     >
       <div className="mx-auto max-w-4xl text-center">
         <h2 id="testimonials-heading" className="text-3xl font-bold text-primary">

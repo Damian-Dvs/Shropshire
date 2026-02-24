@@ -90,7 +90,7 @@ export default function FacebookTeaser() {
               <button
                 onClick={openFacebook}
                 type="button"
-                className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-white font-semibold shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="mt-6 inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-white font-semibold shadow-sm hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Open on Facebook
                 <svg className="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
