@@ -32,8 +32,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/cleaners-:slug" element={<LocationPage />} />
-        <Route path="*" element={<HomePage />} />
+        <Route path="/:slug" element={<LocationPage />} />
       </Routes>
       <Analytics />
     </>

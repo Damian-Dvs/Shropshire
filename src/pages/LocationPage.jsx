@@ -286,7 +286,10 @@ function LocationNearby({ loc }) {
 
 export default function LocationPage() {
   const { slug } = useParams();
-  const loc = getLocationBySlug(slug);
+
+  // Route is /:slug so slug = "cleaners-oswestry"; strip the prefix
+  const townSlug = slug?.startsWith("cleaners-") ? slug.slice(9) : null;
+  const loc = townSlug ? getLocationBySlug(townSlug) : null;
 
   if (!loc) return <Navigate to="/" replace />;
 
