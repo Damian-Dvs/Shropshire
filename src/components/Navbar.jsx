@@ -6,6 +6,7 @@ const AREA_LINKS = [
   { label: "Ellesmere",    href: "/cleaners-ellesmere" },
   { label: "Shrewsbury",   href: "/cleaners-shrewsbury" },
   { label: "Gobowen",      href: "/cleaners-gobowen" },
+  { label: "St Martins",   href: "/cleaners-st-martins" },
   { label: "Chirk",        href: "/cleaners-chirk" },
   { label: "Llangollen",   href: "/cleaners-llangollen" },
   { label: "Whittington",  href: "/cleaners-whittington" },
@@ -120,7 +121,7 @@ export default function Navbar() {
         aria-labelledby="mobile-menu-button"
         aria-hidden={!menuOpen}
         className={`md:hidden bg-primary bg-opacity-95 flex flex-col items-center space-y-3 overflow-hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-[32rem] py-4 opacity-100" : "max-h-0 py-0 opacity-0"
+          menuOpen ? "max-h-[36rem] py-4 opacity-100" : "max-h-0 py-0 opacity-0"
         }`}
       >
         <a href="/#home" className="hover:text-soft py-2" onClick={() => setMenuOpen(false)}>Home</a>
