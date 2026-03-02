@@ -1,5 +1,7 @@
 import React from "react";
-import { Analytics } from '@vercel/analytics/react'
+import { Routes, Route } from "react-router-dom";
+import { Analytics } from '@vercel/analytics/react';
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
@@ -8,9 +10,9 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import FacebookSection from "./components/FacebookSection";
+import LocationPage from "./pages/LocationPage";
 
-
-function App() {
+function HomePage() {
   return (
     <>
       <Navbar />
@@ -21,6 +23,18 @@ function App() {
       <ContactForm />
       <FacebookSection />
       <Footer />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cleaners-:slug" element={<LocationPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
       <Analytics />
     </>
   );
