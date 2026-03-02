@@ -128,6 +128,24 @@ export const locations = [
       "Yes, Whittington is a regular part of our service route. We offer standard, deep and one-off cleans for Whittington households.",
   },
   {
+    slug: "st-martins",
+    name: "St Martins",
+    county: "Shropshire",
+    postcode: "SY11",
+    pageTitle: "Domestic Cleaners in St Martins | ShropShine Cleaning",
+    h1: "Domestic Cleaners in St Martins",
+    intro:
+      "ShropShine Cleaning is your local, family-run cleaning team serving St Martins and the surrounding area, including Gobowen, Weston Rhyn and Oswestry. Whether you need a regular weekly clean, a one-off deep clean or an end of tenancy service, we're here to help — fully insured and always friendly.",
+    metaDescription:
+      "Trusted domestic cleaners in St Martins, Shropshire. ShropShine — your local, family-run cleaning team. Standard, deep and end-of-tenancy cleans. From £17.50/hr.",
+    canonical: `${BASE_URL}/cleaners-st-martins`,
+    nearbyAreas: ["Gobowen", "Weston Rhyn", "Oswestry", "Whittington"],
+    geo: { lat: "52.9101", lng: "-3.0540" },
+    faqQuestion: "Do you offer cleaning services in St Martins?",
+    faqAnswer:
+      "Yes — St Martins is our home base. We provide regular, deep and one-off cleans throughout St Martins and surrounding villages.",
+  },
+  {
     slug: "weston-rhyn",
     name: "Weston Rhyn",
     county: "Shropshire",

@@ -14,6 +14,8 @@ const SLUG_MAP = {
   "Ellesmere": "ellesmere",
   "Shrewsbury": "shrewsbury",
   "Gobowen": "gobowen",
+  "St Martins": "st-martins",
+  "St Martin's": "st-martins",
   "Chirk": "chirk",
   "Llangollen": "llangollen",
   "Whittington": "whittington",
