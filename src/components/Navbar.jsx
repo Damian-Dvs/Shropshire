@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AREA_LINKS = [
   { label: "Oswestry",     href: "/cleaners-oswestry" },
@@ -71,14 +72,14 @@ export default function Navbar() {
                 onMouseLeave={() => setAreasOpen(false)}
               >
                 {AREA_LINKS.map(({ label, href }) => (
-                  <a
+                  <Link
                     key={href}
-                    href={href}
+                    to={href}
                     className="block px-4 py-2 text-sm hover:bg-soft hover:text-primary transition"
                     onClick={() => setAreasOpen(false)}
                   >
                     {label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
@@ -131,14 +132,14 @@ export default function Navbar() {
           <p className="text-soft/70 text-xs font-semibold uppercase tracking-widest mb-2">Areas We Cover</p>
           <div className="flex flex-wrap justify-center gap-2 px-4">
             {AREA_LINKS.map(({ label, href }) => (
-              <a
+              <Link
                 key={href}
-                href={href}
+                to={href}
                 className="rounded-full border border-white/30 px-3 py-1 text-sm hover:bg-white/10 transition"
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
