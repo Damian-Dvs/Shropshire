@@ -11,11 +11,11 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-md">
           ShropShine Cleaning
           <span className="block text-xl sm:text-2xl font-normal mt-2">
-            Domestic & Commercial Cleaners in Shropshire
+            Domestic Cleaners in Oswestry &amp; Shropshire
           </span>
         </h1>
         <p className="text-lg sm:text-xl mb-6 drop-shadow">
-          Family-run specialists for standard, deep and end-of-tenancy cleans across Shropshire.
+          Family-run specialists for standard, deep and end-of-tenancy cleans in Oswestry, Ellesmere, Shrewsbury and across Shropshire.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
