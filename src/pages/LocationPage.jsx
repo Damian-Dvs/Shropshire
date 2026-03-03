@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 
 import { getLocationBySlug, BASE_URL } from "../data/locations";
@@ -286,6 +286,62 @@ function LocationNearby({ loc }) {
   );
 }
 
+const GENERIC_FAQS = [
+  {
+    q: "How much does a standard clean cost?",
+    a: "Standard cleaning starts from £17.50 per hour with a minimum booking of 2 hours (from £35 total).",
+  },
+  {
+    q: "Are you insured?",
+    a: "Yes — ShropShine is fully insured through Simply Business. Cover applies to every residential and commercial booking.",
+  },
+  {
+    q: "How do I book a clean?",
+    a: "Fill in the contact form on our website or call us on 07532 029849. We will confirm your slot within one working day.",
+  },
+];
+
+function LocationFAQ({ loc }) {
+  const faqs = [
+    { q: loc.faqQuestion, a: loc.faqAnswer },
+    ...GENERIC_FAQS,
+  ];
+  const [openIndex, setOpenIndex] = useState(null);
+
+  return (
+    <section className="bg-white py-12 px-4">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold text-primary mb-6">
+          Frequently Asked Questions — {loc.name} Cleaning
+        </h2>
+        <dl className="divide-y divide-gray-200 border border-gray-200 rounded-xl overflow-hidden">
+          {faqs.map((faq, i) => (
+            <div key={i}>
+              <dt>
+                <button
+                  className="w-full flex items-center justify-between gap-4 text-left px-5 py-4 text-gray-800 font-medium hover:bg-soft transition-colors"
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  aria-expanded={openIndex === i}
+                >
+                  <h3 className="text-base font-medium">{faq.q}</h3>
+                  <span className="shrink-0 text-primary text-xl leading-none">
+                    {openIndex === i ? "−" : "+"}
+                  </span>
+                </button>
+              </dt>
+              {openIndex === i && (
+                <dd className="px-5 pb-4 text-gray-600 text-sm leading-relaxed">
+                  {faq.a}
+                </dd>
+              )}
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 export default function LocationPage() {
   const { slug } = useParams();
 
@@ -304,6 +360,7 @@ export default function LocationPage() {
       <Services />
       <Testimonials />
       <LocationNearby loc={loc} />
+      <LocationFAQ loc={loc} />
       <ContactForm />
       <Footer />
     </>
