@@ -83,7 +83,7 @@ export default function Testimonials() {
               className=”mt-4 flex justify-center text-yellow-400 text-xl”
               aria-label=”5 out of 5 stars”
             >
-              &#9733;&#9733;&#9733;&#9733;&#9733;
+              {“\u2605\u2605\u2605\u2605\u2605”}
             </span>
             <blockquote className=”mt-4 text-lg leading-relaxed text-gray-700”>
               “{activeTestimonial.text}”
