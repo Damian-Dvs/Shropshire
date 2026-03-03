@@ -79,13 +79,7 @@ export default function Testimonials() {
             >
               <path d="M7.17 6A5.17 5.17 0 002 11.17v.16A5.67 5.67 0 007.65 17H8a1 1 0 001-1v-3.54a1 1 0 00-1-1H6.63a.13.13 0 01-.13-.13v-.85A2.48 2.48 0 019 8a1 1 0 001-1V7a1 1 0 00-.83-1zM17.17 6A5.17 5.17 0 0012 11.17v.16A5.67 5.67 0 0017.65 17H18a1 1 0 001-1v-3.54a1 1 0 00-1-1h-1.37a.13.13 0 01-.13-.13v-.85A2.48 2.48 0 0120 8a1 1 0 001-1V7a1 1 0 00-.83-1z" />
             </svg>
-            <span
-              className=”mt-4 flex justify-center text-yellow-400 text-xl”
-              aria-label=”5 out of 5 stars”
-            >
-              {“\u2605\u2605\u2605\u2605\u2605”}
-            </span>
-            <blockquote className=”mt-4 text-lg leading-relaxed text-gray-700”>
+            <blockquote className=”mt-6 text-lg leading-relaxed text-gray-700”>
               “{activeTestimonial.text}”
             </blockquote>
             <figcaption className=”mt-6 font-semibold text-primary”>
