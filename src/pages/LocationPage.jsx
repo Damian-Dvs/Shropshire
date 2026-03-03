@@ -87,30 +87,6 @@ function buildLocationSchema(loc) {
             "name": loc.faqQuestion,
             "acceptedAnswer": { "@type": "Answer", "text": loc.faqAnswer },
           },
-          {
-            "@type": "Question",
-            "name": "How much does a standard clean cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Standard cleaning starts from £17.50 per hour with a minimum booking of 2 hours (from £35 total).",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "Are you insured?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes — ShropShine is fully insured through Simply Business. Cover applies to every residential and commercial booking.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "How do I book a clean?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Fill in the contact form on our website or call us on 07532 029849. We will confirm your slot within one working day.",
-            },
-          },
         ],
       },
     ],
