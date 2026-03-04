@@ -89,6 +89,29 @@ function buildLocationSchema(loc) {
           },
         ],
       },
+      {
+        "@type": "Service",
+        "name": `Deep Clean ${loc.name}`,
+        "description": `Professional deep cleaning service in ${loc.name}, ${loc.county}. Reaches behind furniture, skirting boards, light fittings and all high-touch areas. From £70.`,
+        "provider": { "@id": `${loc.canonical}#localbusiness` },
+        "areaServed": { "@type": "City", "name": loc.name },
+        "offers": { "@type": "Offer", "price": "70", "priceCurrency": "GBP", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "70", "priceCurrency": "GBP" } },
+      },
+      {
+        "@type": "Service",
+        "name": `End of Tenancy Cleaning ${loc.name}`,
+        "description": `End of tenancy cleaning in ${loc.name}, ${loc.county}. Top-to-bottom clean compliant with landlord and letting agency requirements. Price on application.`,
+        "provider": { "@id": `${loc.canonical}#localbusiness` },
+        "areaServed": { "@type": "City", "name": loc.name },
+      },
+      {
+        "@type": "Service",
+        "name": `Standard Domestic Cleaning ${loc.name}`,
+        "description": `Regular domestic cleaning in ${loc.name}, ${loc.county}. Weekly or fortnightly cleans from £17.50/hr (2-hour minimum).`,
+        "provider": { "@id": `${loc.canonical}#localbusiness` },
+        "areaServed": { "@type": "City", "name": loc.name },
+        "offers": { "@type": "Offer", "price": "17.50", "priceCurrency": "GBP" },
+      },
     ],
   };
 }
@@ -333,7 +356,7 @@ export default function LocationPage() {
       <Navbar />
       <LocationHero loc={loc} />
       <LocationIntro loc={loc} />
-      <Services />
+      <Services locationName={loc.name} />
       <Testimonials />
       <LocationNearby loc={loc} />
       <LocationFAQ loc={loc} />
