@@ -131,16 +131,19 @@ function ServiceAccordion({ features, id, isOpen, toggle }) {
   );
 }
 
-export default function Services() {
+export default function Services({ locationName }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section id="services" className="bg-soft py-16 px-4">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-3xl font-bold text-primary">Our Services</h2>
-        <p className="mx-auto mt-3 max-w-3xl text-center text-gray-600">
-          Choose the clean that fits your space. Tap or click “What’s included” on any
-          card to see the detailed checklist.
+    <section id=”services” className=”bg-soft py-16 px-4”>
+      <div className=”mx-auto max-w-6xl”>
+        <h2 className=”text-center text-3xl font-bold text-primary”>
+          {locationName ? `Cleaning Services in ${locationName}` : “Our Services”}
+        </h2>
+        <p className=”mx-auto mt-3 max-w-3xl text-center text-gray-600”>
+          {locationName
+            ? `ShropShine Cleaning offers the following services in ${locationName}. Tap or click “What’s included” on any card to see the detailed checklist.`
+            : `Choose the clean that fits your space. Tap or click “What’s included” on any card to see the detailed checklist.`}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
