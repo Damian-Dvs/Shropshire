@@ -24,7 +24,7 @@ const services = [
     icon: "🪣",
     comment: "Like hitting the reset button for your home",
     description:
-      "A more intensive clean that reaches the areas your regular routine doesn’t always cover, leaving everything sparkling.",
+      "A more intensive clean that reaches the areas your regular routine doesn't always cover, leaving everything sparkling.",
     features: [
       "Behind and under furniture and appliances",
       "Skirting boards, doors and frames",
@@ -60,7 +60,7 @@ const services = [
     icon: "🚚",
     comment: "Move-in / Move-out support",
     description:
-      "Leave your old place spotless or arrive to a home that’s fresh, welcoming and ready for boxes.",
+      "Leave your old place spotless or arrive to a home that's fresh, welcoming and ready for boxes.",
     features: [
       "Kitchen and bathroom scrubs",
       "Floors vacuumed and mopped",
@@ -83,7 +83,7 @@ function ServiceAccordion({ features, id, isOpen, toggle }) {
         aria-controls={`${id}-content`}
         className="flex w-full items-center justify-between rounded-xl bg-soft px-4 py-3 text-left text-sm font-semibold text-primary transition hover:bg-primary/10"
       >
-        <span>What’s included</span>
+        <span>What's included</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`h-5 w-5 transform transition-transform ${isOpen ? "rotate-180" : "rotate-0"}`}
@@ -135,15 +135,15 @@ export default function Services({ locationName }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section id=”services” className=”bg-soft py-16 px-4”>
-      <div className=”mx-auto max-w-6xl”>
-        <h2 className=”text-center text-3xl font-bold text-primary”>
-          {locationName ? `Cleaning Services in ${locationName}` : “Our Services”}
+    <section id="services" className="bg-soft py-16 px-4">
+      <div className="mx-auto max-w-6xl">
+        <h2 className="text-center text-3xl font-bold text-primary">
+          {locationName ? `Cleaning Services in ${locationName}` : "Our Services"}
         </h2>
-        <p className=”mx-auto mt-3 max-w-3xl text-center text-gray-600”>
+        <p className="mx-auto mt-3 max-w-3xl text-center text-gray-600">
           {locationName
-            ? `ShropShine Cleaning offers the following services in ${locationName}. Tap or click “What’s included” on any card to see the detailed checklist.`
-            : `Choose the clean that fits your space. Tap or click “What’s included” on any card to see the detailed checklist.`}
+            ? `ShropShine Cleaning offers the following services in ${locationName}. Tap or click "What's included" on any card to see the detailed checklist.`
+            : `Choose the clean that fits your space. Tap or click "What's included" on any card to see the detailed checklist.`}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
