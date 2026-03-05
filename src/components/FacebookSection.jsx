@@ -67,7 +67,7 @@ export default function FacebookTeaser() {
             Follow us on Facebook
           </h2>
           <p className="mt-2 text-slate-600">
-            See recent jobs, reviews and updates from ShropShine Cleaning.
+            See our latest work, client reviews and updates from the ShropShine team.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function FacebookTeaser() {
 
             <div className="md:w-3/5 p-8 flex flex-col items-center text-center">
               <p className="text-slate-700 max-w-prose">
-                Photos from recent cleans, handy tips, and the latest updates.
+                Take a look at our recent work, see what clients are saying, and keep up with the latest from ShropShine.
               </p>
 
               <button

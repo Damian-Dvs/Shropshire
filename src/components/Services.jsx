@@ -7,7 +7,7 @@ const services = [
     icon: "🧼",
     comment: "Minimum booking: 2 hours (£17.50/hr)",
     description:
-      "Perfect for weekly or fortnightly cleans that keep your home fresh, tidy and comfortable without the stress.",
+      "Keep your home consistently clean without lifting a finger. Perfect for weekly or fortnightly visits that maintain a fresh, comfortable space.",
     features: [
       "Dusting and wiping down surfaces",
       "Vacuuming and mopping floors",
@@ -16,7 +16,7 @@ const services = [
       "Tidying each room for a neat finish",
     ],
     footer:
-      "Ideal for a steady routine that keeps things looking their best in between deeper cleans.",
+      "A reliable routine that keeps your home looking its best, week in, week out.",
   },
   {
     title: "Deep Clean",
@@ -24,7 +24,7 @@ const services = [
     icon: "🪣",
     comment: "Like hitting the reset button for your home",
     description:
-      "A more intensive clean that reaches the areas your regular routine doesn't always cover, leaving everything sparkling.",
+      "A thorough clean that tackles everything your regular routine misses — from behind appliances to light fittings to inside windows.",
     features: [
       "Behind and under furniture and appliances",
       "Skirting boards, doors and frames",
@@ -43,7 +43,7 @@ const services = [
     icon: "🏠",
     comment: "Compliant with landlord/agency requirements",
     description:
-      "Top-to-bottom clean to help make deposits stress-free and impress landlords and letting agents.",
+      "Cleaned to landlord and letting agent standards, giving you the best chance of a smooth handover and your full deposit back.",
     features: [
       "Deep clean of every room, fixture and fitting",
       "Full kitchen and bathroom detail",
@@ -60,7 +60,7 @@ const services = [
     icon: "🚚",
     comment: "Move-in / Move-out support",
     description:
-      "Leave your old place spotless or arrive to a home that's fresh, welcoming and ready for boxes.",
+      "Moving is stressful enough — let us handle the cleaning. We'll leave your old place spotless and have your new home ready to move straight into.",
     features: [
       "Kitchen and bathroom scrubs",
       "Floors vacuumed and mopped",
@@ -143,7 +143,7 @@ export default function Services({ locationName }) {
         <p className="mx-auto mt-3 max-w-3xl text-center text-gray-600">
           {locationName
             ? `ShropShine Cleaning offers the following services in ${locationName}. Tap or click "What's included" on any card to see the detailed checklist.`
-            : `Choose the clean that fits your space. Tap or click "What's included" on any card to see the detailed checklist.`}
+            : `Every service is carried out with the same care and attention. Tap any card to see exactly what's included.`}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">

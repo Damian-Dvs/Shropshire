@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     name: "Holly C.",
-    text: "Hayley Did a fantastic job, with great attention to detail. Would definately recommend her services",
+    text: "Hayley did a fantastic job, with great attention to detail. Would definitely recommend her services.",
   },
   {
     name: "Jen H.",
@@ -62,8 +62,7 @@ export default function Testimonials() {
           What Our Clients Say
         </h2>
         <p className="mt-3 text-gray-600">
-          Real feedback from Shropshire homeowners and businesses who trust us to keep
-          their spaces spotless.
+          Hear from the homeowners and businesses who trust ShropShine to keep their spaces spotless.
         </p>
 
         <div className="relative mt-12">

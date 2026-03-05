@@ -15,7 +15,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="text-lg sm:text-xl mb-6 drop-shadow">
-          Family-run specialists for standard, deep and end-of-tenancy cleans in Oswestry, Ellesmere, Shrewsbury and across Shropshire.
+          Your local, trusted cleaning team — reliable, fully insured, and proud of every clean we do.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a

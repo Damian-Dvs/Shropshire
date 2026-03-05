@@ -227,11 +227,11 @@ function LocationIntro({ loc }) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center text-sm">
           <div className="rounded-2xl border border-primary/15 bg-soft p-5">
             <div className="font-semibold text-primary mb-1">Fully Insured</div>
-            <div className="text-gray-600">Covered through Simply Business</div>
+            <div className="text-gray-600">Insured through Simply Business</div>
           </div>
           <div className="rounded-2xl border border-primary/15 bg-soft p-5">
             <div className="font-semibold text-primary mb-1">Family Run</div>
-            <div className="text-gray-600">Personal, reliable service</div>
+            <div className="text-gray-600">Friendly, reliable service</div>
           </div>
           <div className="rounded-2xl border border-primary/15 bg-soft p-5">
             <div className="font-semibold text-primary mb-1">From £17.50/hr</div>
