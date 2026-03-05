@@ -120,8 +120,7 @@ export default function ContactForm() {
             Request a Slot
           </h2>
           <p className="mt-3 text-center text-gray-600">
-            Tell us a little about the clean you need and we’ll reply within one working
-            day.
+            Tell us what you need and we’ll get back to you within one working day — often sooner.
           </p>
 
           {submitted ? (
