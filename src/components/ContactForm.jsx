@@ -1,6 +1,8 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const GETFORM_ENDPOINT = "/api/contact";
+
+const UK_PHONE_RE = /^(\+44\s?|0)(7\d{3}|\d{2,4})\s?\d{3,4}\s?\d{3,4}$/;
 
 export default function ContactForm() {
   const inputClass =
@@ -16,52 +18,49 @@ export default function ContactForm() {
     serviceTime: "",
     message: "",
     hearAbout: "",
-    _gotcha: "", // honeypot for bots
+    _gotcha: "",
   });
 
-  const dateRef = useRef(null);
-  const timeRef = useRef(null);
-
-  const activatePicker = (ref, type) => {
-    const el = ref?.current;
-    if (!el) return;
-    if (el.type !== type) el.type = type;
-    requestAnimationFrame(() => {
-      try {
-        if (typeof el.showPicker === "function") {
-          el.showPicker();
-        } else {
-          el.focus();
-        }
-      } catch (_) {
-        el.focus();
-      }
-    });
-  };
-
   const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const validatePhone = (phone) => UK_PHONE_RE.test(phone.trim());
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setError("");
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validate = () => {
+    const errors = {};
+    if (!formData.name.trim()) errors.name = "Please enter your name.";
+    if (!formData.email.trim()) errors.email = "Please enter your email.";
+    if (!formData.phone.trim()) {
+      errors.phone = "Please enter your phone number.";
+    } else if (!validatePhone(formData.phone)) {
+      errors.phone = "Please enter a valid UK phone number (e.g. 07532 029849).";
+    }
+    if (!formData.location.trim()) errors.location = "Please enter your location.";
+    if (!formData.serviceDate) errors.serviceDate = "Please choose a preferred date.";
+    if (!formData.serviceTime) errors.serviceTime = "Please choose a preferred time.";
+    if (!formData.message.trim()) errors.message = "Please tell us about the clean.";
+    return errors;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.location ||
-      !formData.serviceDate ||
-      !formData.serviceTime ||
-      !formData.message
-    ) {
-      setError("Please fill in all fields.");
+    const errors = validate();
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setError("Please fix the errors below before submitting.");
       return;
     }
 
@@ -85,6 +84,7 @@ export default function ContactForm() {
       } catch (_) {}
 
       if (response.ok && (!data || data.ok !== false)) {
+        setSubmittedName(formData.name.split(" ")[0]);
         setSubmitted(true);
         setFormData({
           name: "",
@@ -97,6 +97,7 @@ export default function ContactForm() {
           hearAbout: "",
           _gotcha: "",
         });
+        setFieldErrors({});
       } else {
         let msg = "Something went wrong. Please try again.";
         if (data?.error) msg = data.error;
@@ -109,6 +110,11 @@ export default function ContactForm() {
     }
   };
 
+  const inputWithError = (name) =>
+    fieldErrors[name]
+      ? `${inputClass} border-red-400 focus:border-red-400 focus:ring-red-200`
+      : inputClass;
+
   return (
     <section id="contact" className="py-16 px-4 bg-white">
       <div className="mx-auto max-w-3xl">
@@ -120,16 +126,40 @@ export default function ContactForm() {
             Request a Slot
           </h2>
           <p className="mt-3 text-center text-gray-600">
-            Tell us what you need and we’ll get back to you within one working day — often sooner.
+            Tell us what you need and we'll get back to you within one working day — often sooner.
           </p>
 
           {submitted ? (
             <div
-              className="mt-6 rounded-2xl bg-soft/70 p-6 text-center text-lg font-medium text-dark"
+              className="mt-8 rounded-2xl bg-soft/70 p-8 text-center"
               role="status"
               aria-live="polite"
             >
-              Thank you! We’ll be in touch shortly.
+              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-7 w-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <p className="text-xl font-bold text-primary">
+                Thanks{submittedName ? `, ${submittedName}` : ""}! We've received your request.
+              </p>
+              <p className="mt-2 text-gray-600">
+                We'll be in touch within one working day — usually much sooner. Keep an eye on your inbox (and spam folder, just in case).
+              </p>
+              <p className="mt-4 text-sm text-gray-500">
+                In the meantime, feel free to{" "}
+                <a href="tel:07532029849" className="text-primary underline hover:no-underline">
+                  call us on 07532 029849
+                </a>{" "}
+                if you'd prefer to speak directly.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-8 space-y-6" noValidate>
@@ -143,208 +173,209 @@ export default function ContactForm() {
                 </div>
               )}
 
-            {/* Honeypot */}
-            <input
-              type="text"
-              name="_gotcha"
-              value={formData._gotcha}
-              onChange={handleChange}
-              className="hidden"
-              tabIndex="-1"
-              autoComplete="off"
-            />
-
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="space-y-1">
-                <label htmlFor="name" className={labelClass}>
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Full name"
-                  autoComplete="name"
-                  className={inputClass}
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label htmlFor="email" className={labelClass}>
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="you@example.com"
-                  autoComplete="email"
-                  className={inputClass}
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label htmlFor="phone" className={labelClass}>
-                  Phone number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="07xxx xxxxxx"
-                  autoComplete="tel"
-                  className={inputClass}
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label htmlFor="location" className={labelClass}>
-                  Location
-                </label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  placeholder="e.g. Oswestry"
-                  autoComplete="address-level2"
-                  className={inputClass}
-                  value={formData.location}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-5 md:grid-cols-2">
-              <div>
-                <label htmlFor="serviceDate" className={labelClass}>
-                  Preferred Date
-                </label>
-                <input
-                  type="text"
-                  id="serviceDate"
-                  name="serviceDate"
-                  aria-label="Preferred Date"
-                  className={inputClass}
-                  min={today}
-                  value={formData.serviceDate}
-                  onChange={handleChange}
-                  onFocus={() => activatePicker(dateRef, "date")}
-                  onClick={() => activatePicker(dateRef, "date")}
-                  onTouchStart={() => activatePicker(dateRef, "date")}
-                  onBlur={(e) => {
-                    if (!e.target.value) e.target.type = "text";
-                  }}
-                  inputMode="none"
-                  placeholder="Preferred Date"
-                  ref={dateRef}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="serviceTime" className={labelClass}>
-                  Preferred Time
-                </label>
-                <input
-                  type="text"
-                  id="serviceTime"
-                  name="serviceTime"
-                  aria-label="Preferred Time"
-                  className={inputClass}
-                  value={formData.serviceTime}
-                  onChange={handleChange}
-                  onFocus={() => activatePicker(timeRef, "time")}
-                  onClick={() => activatePicker(timeRef, "time")}
-                  onTouchStart={() => activatePicker(timeRef, "time")}
-                  onBlur={(e) => {
-                    if (!e.target.value) e.target.type = "text";
-                  }}
-                  inputMode="none"
-                  placeholder="Preferred Time"
-                  ref={timeRef}
-                  required
-                />
-              </div>
-            </div>
-            <p className="text-sm text-gray-600">
-              We’ll confirm the closest available slot.
-            </p>
-
-            <div className="space-y-1">
-              <label htmlFor="message" className={labelClass}>
-                Tell us about the clean
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="What needs attention, access notes, preferred frequency…"
-                aria-describedby="contact-heading"
-                className={`${inputClass} min-h-[150px] resize-y`}
-                value={formData.message}
+              {/* Honeypot */}
+              <input
+                type="text"
+                name="_gotcha"
+                value={formData._gotcha}
                 onChange={handleChange}
-                required
+                className="hidden"
+                tabIndex="-1"
+                autoComplete="off"
               />
-            </div>
 
-            {/* How did you hear about us? */}
-            <div>
-              <label htmlFor="hearAbout" className={labelClass}>
-                How did you hear about us?
-              </label>
-              <div className="relative">
-                <select
-                  id="hearAbout"
-                  name="hearAbout"
-                  className={`${inputClass} h-12 appearance-none pr-10`}
-                  value={formData.hearAbout}
-                  onChange={handleChange}
-                >
-                  <option value="">Please select</option>
-                  <option value="Google">Google</option>
-                  <option value="Facebook">Facebook</option>
-                  <option value="Flyer/Poster">Flyer/Poster</option>
-                  <option value="Recommendation">Recommendation</option>
-                </select>
-                <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-primary/70">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-1">
+                  <label htmlFor="name" className={labelClass}>
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Full name"
+                    autoComplete="name"
+                    className={inputWithError("name")}
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.name && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.name}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="email" className={labelClass}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autoComplete="email"
+                    className={inputWithError("email")}
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.email && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.email}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="phone" className={labelClass}>
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="07xxx xxxxxx"
+                    autoComplete="tel"
+                    className={inputWithError("phone")}
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.phone && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.phone}</p>
+                  )}
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="location" className={labelClass}>
+                    Location
+                  </label>
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder="e.g. Oswestry"
+                    autoComplete="address-level2"
+                    className={inputWithError("location")}
+                    value={formData.location}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.location && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.location}</p>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
-              aria-busy={loading}
-            >
-              {loading ? "Sending..." : "Request a Slot"}
-            </button>
-            <p className="text-center text-xs text-gray-500">
-              Your information is used only to respond to your enquiry.
-            </p>
-          </form>
-        )}
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-1">
+                  <label htmlFor="serviceDate" className={labelClass}>
+                    Preferred Date
+                  </label>
+                  <input
+                    type="date"
+                    id="serviceDate"
+                    name="serviceDate"
+                    className={inputWithError("serviceDate")}
+                    min={today}
+                    value={formData.serviceDate}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.serviceDate && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.serviceDate}</p>
+                  )}
+                </div>
+                <div className="space-y-1">
+                  <label htmlFor="serviceTime" className={labelClass}>
+                    Preferred Time
+                  </label>
+                  <input
+                    type="time"
+                    id="serviceTime"
+                    name="serviceTime"
+                    className={inputWithError("serviceTime")}
+                    value={formData.serviceTime}
+                    onChange={handleChange}
+                    required
+                  />
+                  {fieldErrors.serviceTime && (
+                    <p className="text-xs text-red-600" role="alert">{fieldErrors.serviceTime}</p>
+                  )}
+                </div>
+              </div>
+              <p className="text-sm text-gray-600">
+                We'll confirm the closest available slot.
+              </p>
+
+              <div className="space-y-1">
+                <label htmlFor="message" className={labelClass}>
+                  Tell us about the clean
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="What needs attention, access notes, preferred frequency…"
+                  aria-describedby="contact-heading"
+                  className={`${inputWithError("message")} min-h-[150px] resize-y`}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+                {fieldErrors.message && (
+                  <p className="text-xs text-red-600" role="alert">{fieldErrors.message}</p>
+                )}
+              </div>
+
+              {/* How did you hear about us? */}
+              <div>
+                <label htmlFor="hearAbout" className={labelClass}>
+                  How did you hear about us?
+                </label>
+                <div className="relative">
+                  <select
+                    id="hearAbout"
+                    name="hearAbout"
+                    className={`${inputClass} h-12 appearance-none pr-10`}
+                    value={formData.hearAbout}
+                    onChange={handleChange}
+                  >
+                    <option value="">Please select</option>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Flyer/Poster">Flyer/Poster</option>
+                    <option value="Recommendation">Recommendation</option>
+                  </select>
+                  <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-primary/70">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full rounded-xl bg-primary px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
+                aria-busy={loading}
+              >
+                {loading ? "Sending…" : "Request a Slot"}
+              </button>
+              <p className="text-center text-xs text-gray-500">
+                Your information is used only to respond to your enquiry.
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </section>
