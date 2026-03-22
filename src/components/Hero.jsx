@@ -17,23 +17,14 @@ export default function Hero() {
         <p className="text-lg sm:text-xl mb-6 drop-shadow">
           Your local, trusted cleaning team — reliable, fully insured, and proud of every clean we do.
         </p>
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+        {/* Primary CTAs — side by side on all screens */}
+        <div className="flex flex-wrap justify-center gap-3">
           <a
             href="/#contact"
             aria-label="Request a cleaning slot with ShropShine"
             className="inline-flex items-center justify-center bg-white text-primary font-semibold px-6 py-3 rounded shadow hover:bg-soft hover:scale-105 transform transition-all duration-200"
           >
             Request a Slot
-          </a>
-          <a
-            href="tel:07532029849"
-            aria-label="Call ShropShine Cleaning on 07532 029849"
-            className="inline-flex items-center justify-center gap-2 bg-primary/80 border border-white/40 px-6 py-3 rounded font-semibold text-white hover:bg-primary hover:scale-105 transform transition-all duration-200"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11l-1.27 1.27a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/>
-            </svg>
-            07532 029849
           </a>
           <a
             href="/#services"
@@ -43,6 +34,18 @@ export default function Hero() {
             View Services
           </a>
         </div>
+
+        {/* Phone — smaller, secondary, below the buttons */}
+        <p className="mt-4 text-sm text-white/80">
+          Or call us directly:{" "}
+          <a
+            href="tel:07532029849"
+            aria-label="Call ShropShine Cleaning on 07532 029849"
+            className="font-semibold text-white underline underline-offset-2 hover:text-soft transition"
+          >
+            07532 029849
+          </a>
+        </p>
 
         {/* Trust badges */}
         <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-white/90">
