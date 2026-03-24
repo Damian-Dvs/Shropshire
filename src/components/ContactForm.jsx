@@ -22,7 +22,6 @@ export default function ContactForm() {
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [submittedName, setSubmittedName] = useState("");
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -84,7 +83,6 @@ export default function ContactForm() {
       } catch (_) {}
 
       if (response.ok && (!data || data.ok !== false)) {
-        setSubmittedName(formData.name.split(" ")[0]);
         setSubmitted(true);
         setFormData({
           name: "",
@@ -148,7 +146,7 @@ export default function ContactForm() {
                 </svg>
               </div>
               <p className="text-xl font-bold text-primary">
-                Thanks{submittedName ? `, ${submittedName}` : ""}! We've received your request.
+                Thanks! We've received your request.
               </p>
               <p className="mt-2 text-gray-600">
                 We'll be in touch within one working day — usually much sooner. Keep an eye on your inbox (and spam folder, just in case).
